@@ -1,15 +1,25 @@
 <x-app-layout>
 
 </x-app-layout>
+
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    admin dashboardkdlfjslfj
-</body>
+  <head>
+   @include('admin.css')
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_sidebar.html -->
+      @include('admin.partial_sideber')
+      <!-- partial -->
+      <!-- add view/admin/navbar.blade.php -->
+      @include('admin.navber')
+        <!-- partial -->
+        <!-- add view/admin/body.blade.php -->
+      @include('admin.body')
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    @include('admin.script')
+  </body>
 </html>

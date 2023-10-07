@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\HomeController;
+use App\Http\controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +30,8 @@ Route::middleware([
 });
 
 route::get('/redirect',[HomeController::class,'redirect']);
+//admin part
+route::get('/view_catagory',[AdminController::class,'view_catagory']);
+route::post('/add_catagory',[AdminController::class,'add_catagory']);
+
+

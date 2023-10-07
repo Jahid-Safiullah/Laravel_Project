@@ -93,6 +93,7 @@
                 @auth
                  <li class="nav-item">
                     <x-app-layout>
+                     
                     </x-app-layout>
                  </li>
                 @else

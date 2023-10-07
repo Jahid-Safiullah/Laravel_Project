@@ -1,6 +1,14 @@
+
+/* Use the tailwind.dashboard.config.js file for this CSS file */
+/* @config "./tailwind.config.js"; */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
 
 [x-cloak] {
     display: none;
