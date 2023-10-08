@@ -93,12 +93,14 @@
                 @auth
                  <li class="nav-item">
                     <x-app-layout>
-                     
+
                     </x-app-layout>
                  </li>
                 @else
                 <li class="nav-item">
-                    <a class="btn btn-outline-primary" href="{{ route('login') }}">Login</a>
+                    <a class="btn btn-outline-primary" id="logincss"  href="{{ route('login') }}">Login</a>
+                    {{-- <x-app-layout>
+                    </x-app-layout> --}}
                  </li>
                  <li class="nav-item">
                     <a class="btn btn-outline-success"  style="margin-left:10px" href="{{ route('register') }}">Registration</a>

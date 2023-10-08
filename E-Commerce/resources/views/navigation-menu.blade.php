@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="">
     <!-- Primary Navigation Menu -->
     <div class="">
-        <div class="flex justify-between h-16">
+        <div class="">
             <div class="flex">
                 <!-- Logo -->
 
