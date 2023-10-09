@@ -30,10 +30,17 @@ Route::middleware([
 });
 
 route::get('/redirect',[HomeController::class,'redirect']);
-//admin part
+
+//-----admin part-----
+
+// Catagory
 route::get('/view_catagory',[AdminController::class,'view_catagory']);
 route::post('/add_catagory',[AdminController::class,'add_catagory']);
 route::get('/delete_catagory/{$id}',[AdminController::class,'delete_catagory']);
+
+//product
+route::get('/view_product',[AdminController::class,'view_product']);
+route::post('/add_product',[AdminController::class,'add_product']);
 
 // route::get('delete/{$id}',[AdminController::class,'delete_catagory']);
 

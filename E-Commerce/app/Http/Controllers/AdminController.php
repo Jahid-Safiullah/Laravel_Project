@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Catagory;
+use App\Models\Product;
 
 // use DB;
 // use Illuminate\Http\Requests;
@@ -33,4 +34,31 @@ class AdminController extends Controller
     //    echo "Record deleted successfully.<br/>";
     //    echo '<a href= "/delete-records">Click Here</a> to go back.';
     // }
+
+    // ----for product purpose-------
+    //view main product blade file and get data from catagories table by catagory Model for product catagory dropdown option.
+    public function view_product(){
+        $catagories=catagory::all();
+        return view('admin.product', compact('catagories'));
+    }
+
+    public function add_product(Request $request ){
+        $product=new product;
+        $product->title=$request->title;
+        $product->description=$request->description;
+        $product->catagory=$request->catagory;
+        $product->quantity=$request->quantity;
+        $product->price=$request->price;
+        $product->discount_price=$request->dis_price;
+
+        $image=$request->image;
+        $imagename=time().'.'.$image->getClientOriginalExtension();
+        $request->image->move('product',$imagename);
+        $product->image=$imagename;
+        // $product->image=$request->image->move('product',time().'.'.$request->image->getClientOriginalExtension());
+
+        $product->save();
+        return redirect()->back();
+    }
+
 }
