@@ -13,8 +13,9 @@
         text-align:center;
         padding:10px;
         background-color:#454d55;
-        
+
    }
+
   </style>
   </head>
   <body>
@@ -28,6 +29,19 @@
 <!---------------------------------------------- add view/admin/body.blade.php ------------------------------------->
 <div class="main-panel ">
     <div class="content-wrapper">
+
+
+<!-- -----after data Delete the message will show --->
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                {{session()->get('message')}}
+            </div>
+        @endif
+  <!----------- end post the Data message code -->
+
+
+
 
 
     <div class="div_center">
@@ -44,15 +58,16 @@
                     <th scope="col">Discount Price</th>
                     <th scope="col">Product Quantity</th>
                     <th scope="col">Product Catagory</th>
-                    <th scope="col">Product Image Here</th>
+                    <th scope="col">Product Image</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
-                    
+
                 </tr>
             </thead>
             <tbody>
                 @foreach($products as $product)
                 <tr>
+
                     <th scope="row">{{$product->id}}</th>
                     <td>{{$product->title}}</td>
                     <td>{{$product->description}}</td>
@@ -60,24 +75,26 @@
                     <td>$ {{$product->discount_price}} </td>
                     <td>{{$product->quantity}} P</td>
                     <td>{{$product->catagory}}</td>
-                    <td>
-                        <img src="/product/{{$product->image}}" alt="{{$product->image}}" >
-                    </td>
-                    <td> <a href="{{url('delete_product',$product->id)}}">Update</a> </td>
-                    <td><a href="{{url('delete_product',$product->id)}}">Delete</a></td>
-                   
+                    <td> <img src="/product/{{$product->image}}" alt="{{$product->image}}" > </td>
+                    <td> <a class="btn btn-primary" href="{{url('update_product',$product->id)}}">Update</a> </td>
+                    <td><a class="btn btn-danger" onclick="return confirm('Are you Sure Delete The Data?')"href="{{url('delete_product',$product->id)}}">Delete</a></td>
+
+
                 </tr>
                 @endforeach
-               
-              
+
+
             </tbody>
         </table>
     </div>
-       
     </div>
+
 </div>
+
+
     <!-- container-scroller -->
     <!-- plugins:js -->
+
     @include('admin.script')
   </body>
 </html>

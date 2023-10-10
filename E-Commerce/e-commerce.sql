@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2023 at 08:58 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Oct 10, 2023 at 10:51 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,12 +39,12 @@ CREATE TABLE `catagories` (
 --
 
 INSERT INTO `catagories` (`id`, `catagory_name`, `created_at`, `updated_at`) VALUES
-(1, 'shirt', '2023-10-08 09:16:19', '2023-10-08 09:16:19'),
 (2, 'pant', '2023-10-08 09:17:05', '2023-10-08 09:17:05'),
 (3, 'panjabi', '2023-10-08 09:40:08', '2023-10-08 09:40:08'),
 (4, 'shirt', '2023-10-08 09:52:09', '2023-10-08 09:52:09'),
 (5, 'shirt', '2023-10-08 09:55:36', '2023-10-08 09:55:36'),
-(6, 'Phone', '2023-10-09 22:04:58', '2023-10-09 22:04:58');
+(7, 'pant', '2023-10-10 04:42:30', '2023-10-10 04:42:30'),
+(8, 'Cap', '2023-10-10 10:40:38', '2023-10-10 10:40:38');
 
 -- --------------------------------------------------------
 
@@ -144,11 +144,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `image`, `catagory`, `quantity`, `price`, `discount_price`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'shirt', 'this unified', '1696874972.png', 'shirt', '7', '20', '10', NULL, '2023-10-09 12:09:32', '2023-10-09 12:09:32'),
-(2, 'panjabi', 'neigh  quality product', '1696875107.jpg', 'panjabi', '10', '450', '10', NULL, '2023-10-09 12:11:47', '2023-10-09 12:11:47'),
-(3, 'Shirt', 'this Shirt is good for helth', '1696908516.webp', 'shirt', '15', '120', '2', NULL, '2023-10-09 21:28:36', '2023-10-09 21:28:36'),
-(4, 'Phone', 'this Phone is good for health and work smooth', '1696910831.webp', 'Phone', '10', '230', '5', NULL, '2023-10-09 22:07:11', '2023-10-09 22:07:11'),
-(5, 'drfgdfg', 'this Phone is good for health and work smooth', '1696911887.webp', 'Phone', '52', '525', '2', NULL, '2023-10-09 22:24:47', '2023-10-09 22:24:47');
+(7, 'Panjabi', 'this unified', '1696940088.jpg', 'panjabi', '20', '100', '2', NULL, '2023-10-10 06:14:48', '2023-10-10 06:14:48'),
+(9, 'Cap', 'this is best Cap', '1696956105.jpg', 'Cap', '50', '20', '2', NULL, '2023-10-10 10:41:45', '2023-10-10 10:41:45');
 
 -- --------------------------------------------------------
 
@@ -170,7 +167,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('8WEJN4Wv6mJCDNfffYoJo0s0LsWJ0SuW0dTRGCax', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWnNIdzF6T0Rua1VHcndmSlpYdmM3aXB5dHl6UkZnbGp5UWNNc1lGdiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC92aWV3X3Byb2R1Y3QiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO30=', 1696875107);
+('8F835F424HqKBoJ1yz7wauoETuB6swtaxved5M8M', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQ0EwV0pDNzl0bmttRzZDU0xqRUN4MzA0UDg5aUFKVHdHc0plQmhQdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC92aWV3X3Byb2R1Y3QiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO30=', 1696959313),
+('fz1tjceJ68oweAk4Dcj4RKJlOa1wkmI5FYLcjEtM', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieGRPZlNDaTF1V3Y3TUF2Q2hYeHBWV3c2aURsTTJlRkl5eWhRaWtJaSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1696971080);
 
 -- --------------------------------------------------------
 
@@ -271,7 +269,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `catagories`
 --
 ALTER TABLE `catagories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -295,7 +293,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`

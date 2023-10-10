@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+   {{-- add css part --}}
+   <base href="/public">
    @include('admin.css')
    <style>
      .div_center{
@@ -36,58 +38,63 @@
                   <!-- end post the Data message code -->
 
                 <div class="div_center">
-                    <h2 style="padding-bottom: 50px">Add Product</h2>
+                    <h2 style="padding-bottom: 50px">Update Product</h2>
 
-                    <form style=" " action="{{url('/add_product')}}" method="post" enctype="multipart/form-data" >
+                    <form style=" " action="{{url('/update_product')}}" method="post" enctype="multipart/form-data" >
                     @csrf
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Product Title :</span>
-                            <input type="text" class="form-control" name="title" placeholder="Write a Title Of Product" aria-label="product Title" aria-describedby="basic-addon1" required>
+                            <input type="text" class="form-control" name="title" placeholder="Write a Title Of Product" aria-label="product Title" aria-describedby="basic-addon1"  value="{{$UpdateProductsDetailes->title}}" required>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Product Description :</span>
-                            <input type="text" name="description" class="form-control"  placeholder="Write a Description" aria-label="product description" aria-describedby="basic-addon1" required>
+                            <input type="text" name="description" class="form-control"  placeholder="Write a Description" aria-label="product description" aria-describedby="basic-addon1" value="{{$UpdateProductsDetailes->description}}" required>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Product Price :</span>
-                            <input type="number" name="price" class="form-control"  placeholder="Write a Price" aria-label="product Price" aria-describedby="basic-addon1" required>
+                            <input type="number" name="price" class="form-control"  placeholder="Write a Price" aria-label="product Price" aria-describedby="basic-addon1" value="{{$UpdateProductsDetailes->price}}" required>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Discount Price :</span>
-                            <input type="number" name="dis_price" class="form-control"  placeholder="Write Discount Price If Applicable" aria-label="product discount Price" aria-describedby="basic-addon1" require>
+                            <input type="number" name="dis_price" class="form-control"  placeholder="Write Discount Price If Applicable" aria-label="product discount Price" aria-describedby="basic-addon1" value="{{$UpdateProductsDetailes->discount_price}}" require>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text"  id="basic-addon2">Product Quantity :</span>
-                            <input type="number" name="quantity" class="form-control" placeholder="Write a Quantity" aria-label="product quantity " aria-describedby="basic-addon2" required>
+                            <input type="number" name="quantity" class="form-control" placeholder="Write a Quantity" aria-label="product quantity " aria-describedby="basic-addon2" value="{{$UpdateProductsDetailes->quantity}}" required>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Product Catagory :</span>
-                        <select class="form-control" name="catagory" aria-label="Default select example" required>
-                            <option selected>Open this select menu</option>
+                            <select class="form-control" name="catagory" aria-label="Default select example"  required>
+                                <option value="{{$UpdateProductsDetailes->catagory}}" selected>{{$UpdateProductsDetailes->catagory}}</option>
 
-                            @foreach ($catagories as $catagory)
+                                $@foreach ($catagories as $catagory)
                                 <option value="{{$catagory->catagory_name}}">{{$catagory->catagory_name}}</option>
-                            @endforeach
+                                @endforeach
 
-                        </select>
-
+                            </select>
                         </div>
+
                         <div class="input-group mb-3">
-                            <span class="input-group-text"  id="basic-addon3">Product Image Here :</span>
-                            <input type="file" name="image" class="form-control"   aria-label="product image " aria-describedby="basic-addon3" required>
+                            <span class="input-group-text"  id="basic-addon3">Current Product Image Here :</span>
+                           <img style="height: 100Px, width:100px" height="100px" width="100px" src="/product/{{$UpdateProductsDetailes->image}}" alt="image">
+                            {{-- <input type="file" name="image" class="form-control"   aria-label="product image " aria-describedby="basic-addon3"  required> --}}
                         </div>
 
-                        <div>
-                            <label for="image">Product Image Here :</label>
-                            <input type="image" id="image" class="border border-light rounded"  name="image" >
+
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"  id="basic-addon3">If You Add New Product Image:</span>
+                            <input type="file" name="image" class="form-control"   aria-label="product image " aria-describedby="basic-addon3"  >
                         </div>
 
+
+
                         <div>
-                            <button type="submit" class="btn btn-primary">Add Product</button>
+                            <button type="submit" class="btn btn-primary">Update Product</button>
                         </div>
 
 
