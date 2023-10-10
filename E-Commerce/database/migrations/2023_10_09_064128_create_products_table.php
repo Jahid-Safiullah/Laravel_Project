@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('catagory');
             $table->string('quantity');
             $table->string('price');
-            $table->string('discount_price');
+            $table->string('discount_price')->nullable();
             $table->integer('category_id')->nullable();
 
 

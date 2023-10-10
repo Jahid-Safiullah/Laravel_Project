@@ -23,9 +23,17 @@
       <!-- add view/admin/navbar.blade.php -->
       @include('admin.navber')
         <!-- partial -->
-        <!-- add view/admin/body.blade.php -->
+<!----------------------------- add view/admin/body.blade.php ------------------------------------------------->
         <div class="main-panel">
             <div class="content-wrapper">
+ <!-- after data post the message will show -->
+            @if(session()->has('message'))
+                  <div class="alert alert-success  alert-dismissible">
+                    <button type="button" class="close" data-dismis="alert" aria-label="close">X</button>
+                    {{session()->get('message')}}
+                  </div>
+            @endif
+                  <!-- end the message code -->
 
                 <div class="div_center">
                     <h2 style="padding-bottom: 50px">Add Product</h2>
@@ -48,7 +56,7 @@
 
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Discount Price :</span>
-                            <input type="number" name="dis_price" class="form-control"  placeholder="Write Discount Price If Applicable" aria-label="product discount Price" aria-describedby="basic-addon1">
+                            <input type="number" name="dis_price" class="form-control"  placeholder="Write Discount Price If Applicable" aria-label="product discount Price" aria-describedby="basic-addon1" require>
                         </div>
 
                         <div class="input-group mb-3">
@@ -65,8 +73,8 @@
                                 <option value="{{$catagory->catagory_name}}">{{$catagory->catagory_name}}</option>
                             @endforeach
 
-
                         </select>
+                        
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text"  id="basic-addon3">Product Image Here :</span>

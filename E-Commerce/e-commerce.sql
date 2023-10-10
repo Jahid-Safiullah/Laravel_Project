@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2023 at 08:13 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Oct 10, 2023 at 08:58 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,8 @@ INSERT INTO `catagories` (`id`, `catagory_name`, `created_at`, `updated_at`) VAL
 (2, 'pant', '2023-10-08 09:17:05', '2023-10-08 09:17:05'),
 (3, 'panjabi', '2023-10-08 09:40:08', '2023-10-08 09:40:08'),
 (4, 'shirt', '2023-10-08 09:52:09', '2023-10-08 09:52:09'),
-(5, 'shirt', '2023-10-08 09:55:36', '2023-10-08 09:55:36');
+(5, 'shirt', '2023-10-08 09:55:36', '2023-10-08 09:55:36'),
+(6, 'Phone', '2023-10-09 22:04:58', '2023-10-09 22:04:58');
 
 -- --------------------------------------------------------
 
@@ -144,7 +145,10 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `title`, `description`, `image`, `catagory`, `quantity`, `price`, `discount_price`, `category_id`, `created_at`, `updated_at`) VALUES
 (1, 'shirt', 'this unified', '1696874972.png', 'shirt', '7', '20', '10', NULL, '2023-10-09 12:09:32', '2023-10-09 12:09:32'),
-(2, 'panjabi', 'neigh  quality product', '1696875107.jpg', 'panjabi', '10', '450', '10', NULL, '2023-10-09 12:11:47', '2023-10-09 12:11:47');
+(2, 'panjabi', 'neigh  quality product', '1696875107.jpg', 'panjabi', '10', '450', '10', NULL, '2023-10-09 12:11:47', '2023-10-09 12:11:47'),
+(3, 'Shirt', 'this Shirt is good for helth', '1696908516.webp', 'shirt', '15', '120', '2', NULL, '2023-10-09 21:28:36', '2023-10-09 21:28:36'),
+(4, 'Phone', 'this Phone is good for health and work smooth', '1696910831.webp', 'Phone', '10', '230', '5', NULL, '2023-10-09 22:07:11', '2023-10-09 22:07:11'),
+(5, 'drfgdfg', 'this Phone is good for health and work smooth', '1696911887.webp', 'Phone', '52', '525', '2', NULL, '2023-10-09 22:24:47', '2023-10-09 22:24:47');
 
 -- --------------------------------------------------------
 
@@ -267,7 +271,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `catagories`
 --
 ALTER TABLE `catagories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -291,7 +295,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
