@@ -40,7 +40,7 @@
                 <div class="div_center">
                     <h2 style="padding-bottom: 50px">Update Product</h2>
 
-                    <form style=" " action="{{url('/update_product')}}" method="post" enctype="multipart/form-data" >
+                    <form style=" " action="{{url('/update_product_add_to_database_table', $UpdateProductsDetailes->id)}}" method="post" enctype="multipart/form-data" >
                     @csrf
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Product Title :</span>

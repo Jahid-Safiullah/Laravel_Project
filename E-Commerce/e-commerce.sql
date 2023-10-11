@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2023 at 10:51 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Oct 11, 2023 at 09:10 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -145,7 +145,10 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `title`, `description`, `image`, `catagory`, `quantity`, `price`, `discount_price`, `category_id`, `created_at`, `updated_at`) VALUES
 (7, 'Panjabi', 'this unified', '1696940088.jpg', 'panjabi', '20', '100', '2', NULL, '2023-10-10 06:14:48', '2023-10-10 06:14:48'),
-(9, 'Cap', 'this is best Cap', '1696956105.jpg', 'Cap', '50', '20', '2', NULL, '2023-10-10 10:41:45', '2023-10-10 10:41:45');
+(9, 'Cap', 'this is best Cap', '1696956105.jpg', 'Cap', '50', '20', '2', NULL, '2023-10-10 10:41:45', '2023-10-10 10:41:45'),
+(10, 'Long Sleeve Shirt for Men', 'New Casual Cotton Long Sleeve Shirt for Men/Man', '1697001655.jpg', 'shirt', '10', '50', '0', NULL, '2023-10-10 23:20:55', '2023-10-10 23:20:55'),
+(11, 'pant', NULL, '1697002260.jpg', 'pant', '20', '45', '1', NULL, '2023-10-10 23:31:00', '2023-10-10 23:31:00'),
+(12, 'kabli panjabi', 'this panjabi is good for helth', '1697002860.webp', 'panjabi', '22', '200', '0', NULL, '2023-10-10 23:41:00', '2023-10-10 23:41:00');
 
 -- --------------------------------------------------------
 
@@ -293,7 +296,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`

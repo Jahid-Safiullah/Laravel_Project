@@ -56,9 +56,9 @@
                     <th scope="col">Product Description</th>
                     <th scope="col">Product Price</th>
                     <th scope="col">Discount Price</th>
-                    <th scope="col">Product Quantity</th>
-                    <th scope="col">Product Catagory</th>
-                    <th scope="col">Product Image</th>
+                    <th scope="col">P. Quantity</th>
+                    <th scope="col">P. Catagory</th>
+                    <th scope="col">P. Image</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
 

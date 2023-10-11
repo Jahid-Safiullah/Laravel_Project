@@ -46,7 +46,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Product Description :</span>
-                            <input type="text" name="description" class="form-control"  placeholder="Write a Description" aria-label="product description" aria-describedby="basic-addon1" required>
+                            <input type="text" name="description" class="form-control"  placeholder="Write a Description" aria-label="product description" aria-describedby="basic-addon1" >
                         </div>
 
                         <div class="input-group mb-3">
@@ -56,7 +56,7 @@
 
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1">Discount Price :</span>
-                            <input type="number" name="dis_price" class="form-control"  placeholder="Write Discount Price If Applicable" aria-label="product discount Price" aria-describedby="basic-addon1" require>
+                            <input type="number" name="dis_price" class="form-control"  placeholder="Write Discount Price If Applicable" aria-label="product discount Price" aria-describedby="basic-addon1" >
                         </div>
 
                         <div class="input-group mb-3">

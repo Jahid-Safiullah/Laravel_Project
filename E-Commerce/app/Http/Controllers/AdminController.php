@@ -49,8 +49,9 @@ class AdminController extends Controller
         $product->catagory=$request->catagory;
         $product->quantity=$request->quantity;
         $product->price=$request->price;
+        
         $product->discount_price=$request->dis_price;
-
+        
         $image=$request->image;
         $imagename=time().'.'.$image->getClientOriginalExtension();
         $request->image->move('product',$imagename);
@@ -70,10 +71,32 @@ class AdminController extends Controller
         return redirect()->back()->with('message','Product Deleted Successfully');
 
     }
-    public function update_product($id){
+    public function update_product( $id){
         $UpdateProductsDetailes=product::find($id);
         $catagories=catagory::all();
         return view('admin.update_product',compact('UpdateProductsDetailes','catagories'));
+    }
+    public function update_product_add_to_database_table(Request $request, $id){
+        $updateProductDatas=product::find($id);
+        $updateProductDatas->title=$request->title;
+        $updateProductDatas->description=$request->description;
+        $updateProductDatas->catagory=$request->catagory;
+        $updateProductDatas->quantity=$request->quantity;
+        $updateProductDatas->price=$request->price;
+        $updateProductDatas->discount_price=$request->dis_price;
+
+        $image=$request->image;
+        if($image){
+            $imagename=time().'.'.$image->getClientOriginalExtension();
+            $request->image->move('product',$imagename);
+            $updateProductDatas->image=$imagename; 
+        }
+        
+        $updateProductDatas->save();
+        return redirect()->back();
+       
+
+        
     }
 
 }
