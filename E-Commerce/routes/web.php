@@ -51,4 +51,5 @@ route::post('/update_product_add_to_database_table/{id}',[AdminController::class
 //product
 route::get('/product_details/{id}',[HomeController::class,'product_details']);
 Route::post('add_cart/{id}', [HomeController::class, 'add_cart']);
-
+route::get('/show_cart',[HomeController::class,'show_cart']);
+route::get('/delete_cart_item/{id}',[HomeController::class,'delete_cart_item']);

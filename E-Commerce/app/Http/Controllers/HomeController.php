@@ -59,12 +59,23 @@ class HomeController extends Controller
 
         $cart->quantity=$request->quantity;
 
-        $cart->save(); 
+        $cart->save();
         return redirect()->back();
        }
        else{
         return redirect('login');
        }
+    }
+    public function show_cart(){
+        $cartDatas=cart::all();
+        return view('home.showCart',compact('cartDatas'));
+    }
+
+    public function delete_cart_item($id){
+        $delete_cart_data=cart::find($id);
+        $delete_cart_data->delete();
+        return redirect()->back();
+
     }
 
 

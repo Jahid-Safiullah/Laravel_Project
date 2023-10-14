@@ -65,7 +65,7 @@
                 @endforeach
                 <!-- ------- for pagination link - -->
 
-                <!-- - {!!$productDatas->appends(Request::all())->links()!!} -- -->
+                {{-- <!-- - {!!$productDatas->appends(Request::all())->links()!!} -- --> --}}
 
                 <!-- ------ this one is boostrap pagination --------- -->
 
