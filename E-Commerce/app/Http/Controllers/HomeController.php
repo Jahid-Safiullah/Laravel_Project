@@ -11,7 +11,7 @@ use App\Models\Product;
 class HomeController extends Controller
 {
     public function index(){
-        $productDatas=product::paginate(6);
+        $productDatas=product::paginate(3);
         return view ('home.userpage',compact('productDatas'));
     }
 
@@ -35,16 +35,31 @@ class HomeController extends Controller
     }
     public function add_cart(Request $request, $id){
        if(Auth::id()){
-        // $cart_datas=cart::find($id);
-        // $cart_datas->name=$request->name;
-        // $cart_datas->email=$request->email;
-        // $cart_datas->address=$request->address;
-        // $cart_datas->product_title=$request->product_title;
-        // $cart_datas->product_catagory=$request->product_catagory;
-        // $cart_datas->price=$request->price;
-        // $cart_datas->quantity=$request->quantity;
-        // $cart_datas->image=$request->image;
-        // $cart_datas->product_details=$request->product_details;
+        $user=Auth::user();
+        $product=product::find($id);
+        $cart=new cart;
+
+        $cart->name=$user->name;
+        $cart->email=$user->email;
+        $cart->phone=$user->phone;
+        $cart->address=$user->address;
+        $cart->user_id=$user->id;
+
+        $cart->product_title=$product->title;
+        $cart->product_catagory=$product->product_catagory;
+
+        if($product->discount_price!=null){
+            $cart->price=$product->discount_price * $request->quantity;
+        }
+        else{
+            $cart->price=$product->price * $request->quantity;
+        }
+        $cart->image=$product->image;
+        $cart->product_id=$product->id;
+
+        $cart->quantity=$request->quantity;
+
+        $cart->save(); 
         return redirect()->back();
        }
        else{

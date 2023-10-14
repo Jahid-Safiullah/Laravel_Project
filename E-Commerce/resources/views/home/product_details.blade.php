@@ -82,14 +82,17 @@
 
                                 </div>
 
-                                <div class="">
-                                    <div class="" style="justify-content: center, align-item:center">
-                                        <a href="{{url('/product_details',)}}" class="btn btn-outline-primary">
-                                         Add to Cart
-                                        </a>
-
+                                <form action="{{url('/add_cart', $product_details_data->id)}}" method="Post">
+                                @csrf
+                                    <div class="row ">
+                                        <div class="col-md-4 rounded-pill ">
+                                            <input class="rounded-pill " type="number" name="quantity" value="1" min="1" >
+                                        </div>
+                                        <div class="col-md-4 rounded-pill">
+                                            <input class="rounded-pill  btn btn-outline-primary  " type="submit" value="add to Cart" style="padding: 12px;">
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
 
 
                        </div>
