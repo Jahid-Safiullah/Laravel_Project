@@ -49,9 +49,9 @@ class AdminController extends Controller
         $product->catagory=$request->catagory;
         $product->quantity=$request->quantity;
         $product->price=$request->price;
-        
+
         $product->discount_price=$request->dis_price;
-        
+
         $image=$request->image;
         $imagename=time().'.'.$image->getClientOriginalExtension();
         $request->image->move('product',$imagename);
@@ -89,14 +89,14 @@ class AdminController extends Controller
         if($image){
             $imagename=time().'.'.$image->getClientOriginalExtension();
             $request->image->move('product',$imagename);
-            $updateProductDatas->image=$imagename; 
+            $updateProductDatas->image=$imagename;
         }
-        
+
         $updateProductDatas->save();
         return redirect()->back();
-       
 
-        
+
+
     }
 
 }

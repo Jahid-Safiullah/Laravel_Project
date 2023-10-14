@@ -12,7 +12,7 @@
                 <div class="col-sm-6 col-md-4 col-lg-4">
                     <div class="box">
                         <div class="option_container">
-                        <div class="options">
+                        <div class="options" method="Post" >
                             <a href="{{url('/product_details',$productData->id)}}" class="option1">
                            Product Details
                             </a>
