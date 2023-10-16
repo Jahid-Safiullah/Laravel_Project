@@ -50,6 +50,13 @@ route::post('/update_product_add_to_database_table/{id}',[AdminController::class
 // ----------------------------------------user part--------------------------------------------------
 //product
 route::get('/product_details/{id}',[HomeController::class,'product_details']);
+
+//cart--------
 Route::post('add_cart/{id}', [HomeController::class, 'add_cart']);
 route::get('/show_cart',[HomeController::class,'show_cart']);
 route::get('/delete_cart_item/{id}',[HomeController::class,'delete_cart_item']);
+
+//----order---------
+route::get('/cash_order',[HomeController::class,'cash_order']);
+route::get('/stripe/{totalPrice}',[HomeController::class,'stripe']);
+Route::post('stripe/{totalPrice}',[HomeController::class,'stripePost'])->name('stripe.post');

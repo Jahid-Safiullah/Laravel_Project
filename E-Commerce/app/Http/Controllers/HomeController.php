@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Order;
+
+use Session;
+use Stripe;
 
 class HomeController extends Controller
 {
@@ -67,8 +71,14 @@ class HomeController extends Controller
        }
     }
     public function show_cart(){
-        $cartDatas=cart::all();
+       if(Auth::id()){
+        $id=Auth::user()->id;
+        $cartDatas=cart::where('user_id','=',$id)->get();
         return view('home.showCart',compact('cartDatas'));
+       }
+       else{
+        return redirect('login');
+       }
     }
 
     public function delete_cart_item($id){
@@ -78,6 +88,90 @@ class HomeController extends Controller
 
     }
 
+    //for user order by Cash ON delivery
+    public function cash_order(){
+
+         $userid=Auth::user()->id;
+         $cartDatas=cart::where('user_id','=',$userid)->get();
+
+        foreach($cartDatas as $cartData){
+            $orderTabel=new order;
+            $orderTabel->name=          $cartData->name;
+            $orderTabel->email=         $cartData->email;
+            $orderTabel->phone=         $cartData->phone;
+            $orderTabel->address=       $cartData->address;
+            $orderTabel->user_id=       $cartData->user_id;
+
+            $orderTabel->product_title= $cartData->product_title;
+            $orderTabel->price=         $cartData->price;
+            $orderTabel->quantity=      $cartData->quantity;
+            $orderTabel->image=         $cartData->image;
+            $orderTabel->product_id=    $cartData->product_id;
+
+            $orderTabel->payment_status=         'cash on delivery';
+            $orderTabel->delivery_status=         'processing';
+
+            $orderTabel->save();
+
+            $cart_id=$cartData->id;
+            $delete_cart_id=cart::find($cart_id);
+            $delete_cart_id->delete();
+        }
+        return redirect()->back()->with('massege','We have received your order. We will connect with you soon....');
+    }
+
+
+    //user order by using card (strip)-----
+
+    public function stripe($totalPrice){
+        return view('home.stripe',compact('totalPrice'));
+    }
+
+    public function stripePost(Request $request,$totalPrice)
+    {
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        Stripe\Charge::create ([
+                "amount" => $totalPrice * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Thanks for your Payment"
+        ]);
+
+
+
+        $userid=Auth::user()->id;
+        $cartDatas=cart::where('user_id','=',$userid)->get();
+
+       foreach($cartDatas as $cartData){
+           $orderTabel=new order;
+           $orderTabel->name=          $cartData->name;
+           $orderTabel->email=         $cartData->email;
+           $orderTabel->phone=         $cartData->phone;
+           $orderTabel->address=       $cartData->address;
+           $orderTabel->user_id=       $cartData->user_id;
+
+           $orderTabel->product_title= $cartData->product_title;
+           $orderTabel->price=         $cartData->price;
+           $orderTabel->quantity=      $cartData->quantity;
+           $orderTabel->image=         $cartData->image;
+           $orderTabel->product_id=    $cartData->product_id;
+
+           $orderTabel->payment_status= 'Paid';
+           $orderTabel->delivery_status='processing';
+
+           $orderTabel->save();
+
+           $cart_id=$cartData->id;
+           $delete_cart_id=cart::find($cart_id);
+           $delete_cart_id->delete();
+       }
+
+
+        Session::flash('success', 'Payment successful!');
+
+        return back();
+    }
 
 
 }

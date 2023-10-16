@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2023 at 09:10 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: Oct 16, 2023 at 09:00 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,38 @@ SET time_zone = "+00:00";
 --
 -- Database: `e-commerce`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `product_title` varchar(255) NOT NULL,
+  `product_catagory` varchar(255) DEFAULT NULL,
+  `price` varchar(255) NOT NULL,
+  `quantity` varchar(255) NOT NULL DEFAULT '1',
+  `image` varchar(255) NOT NULL,
+  `product_id` varchar(255) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `name`, `email`, `phone`, `address`, `product_title`, `product_catagory`, `price`, `quantity`, `image`, `product_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(4, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', 'kabli panjabi', NULL, '0', '1', '1697002860.webp', '12', '4', '2023-10-14 10:13:23', '2023-10-14 10:13:23'),
+(5, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', 'Cotton Panjabi', NULL, '98', '2', '1697105042.webp', '14', '4', '2023-10-14 10:13:43', '2023-10-14 10:13:43'),
+(6, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', 'pant', NULL, '2', '2', '1697002260.jpg', '11', '4', '2023-10-14 21:47:29', '2023-10-14 21:47:29');
 
 -- --------------------------------------------------------
 
@@ -44,7 +76,8 @@ INSERT INTO `catagories` (`id`, `catagory_name`, `created_at`, `updated_at`) VAL
 (4, 'shirt', '2023-10-08 09:52:09', '2023-10-08 09:52:09'),
 (5, 'shirt', '2023-10-08 09:55:36', '2023-10-08 09:55:36'),
 (7, 'pant', '2023-10-10 04:42:30', '2023-10-10 04:42:30'),
-(8, 'Cap', '2023-10-10 10:40:38', '2023-10-10 10:40:38');
+(8, 'Cap', '2023-10-10 10:40:38', '2023-10-10 10:40:38'),
+(9, 'Phone', '2023-10-16 08:35:14', '2023-10-16 08:35:14');
 
 -- --------------------------------------------------------
 
@@ -86,7 +119,46 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (13, '2023_10_01_132520_create_sessions_table', 1),
 (14, '2023_10_07_061733_create_catagories_table', 1),
-(15, '2023_10_09_064128_create_products_table', 2);
+(15, '2023_10_09_064128_create_products_table', 2),
+(16, '2023_10_11_182135_create_carts_table', 3),
+(17, '2023_10_15_092832_create_orders_table', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
+  `product_title` varchar(255) NOT NULL,
+  `quantity` varchar(255) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `product_id` varchar(255) NOT NULL,
+  `payment_status` varchar(255) NOT NULL,
+  `delivery_status` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `email`, `phone`, `address`, `user_id`, `product_title`, `quantity`, `price`, `image`, `product_id`, `payment_status`, `delivery_status`, `created_at`, `updated_at`) VALUES
+(12, 'rakib', 'rakib@gamil.com', '01521319764', 'Mirpur', '6', 'Cap', '1', '2', '1696956105.jpg', '9', 'cash on delivery', 'processing', '2023-10-15 04:42:13', '2023-10-15 04:42:13'),
+(13, 'rakib', 'rakib@gamil.com', '01521319764', 'Mirpur', '6', 'Long Sleeve Shirt for Men', '1', '20', '1697001655.jpg', '10', 'cash on delivery', 'processing', '2023-10-15 04:42:13', '2023-10-15 04:42:13'),
+(14, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'Semi Long Panjabi', '2', '40', '1697104704.jpg', '13', 'cash on delivery', 'processing', '2023-10-15 04:45:35', '2023-10-15 04:45:35'),
+(15, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'Long Sleeve Shirt for Men', '2', '40', '1697001655.jpg', '10', 'cash on delivery', 'processing', '2023-10-15 06:46:20', '2023-10-15 06:46:20'),
+(16, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'kabli panjabi', '2', '100', '1697002860.webp', '12', 'cash on delivery', 'processing', '2023-10-15 06:46:20', '2023-10-15 06:46:20'),
+(17, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'Cotton Panjabi', '2', '98', '1697105042.webp', '14', 'Paid', 'processing', '2023-10-16 12:17:40', '2023-10-16 12:17:40'),
+(18, 'rakib', 'rakib@gamil.com', '01521319764', 'Mirpur', '6', 'Collar Casual Shirt', '1', '200', '1697467652.jpg', '17', 'Paid', 'processing', '2023-10-16 12:59:14', '2023-10-16 12:59:14');
 
 -- --------------------------------------------------------
 
@@ -144,11 +216,15 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `image`, `catagory`, `quantity`, `price`, `discount_price`, `category_id`, `created_at`, `updated_at`) VALUES
-(7, 'Panjabi', 'this unified', '1696940088.jpg', 'panjabi', '20', '100', '2', NULL, '2023-10-10 06:14:48', '2023-10-10 06:14:48'),
-(9, 'Cap', 'this is best Cap', '1696956105.jpg', 'Cap', '50', '20', '2', NULL, '2023-10-10 10:41:45', '2023-10-10 10:41:45'),
-(10, 'Long Sleeve Shirt for Men', 'New Casual Cotton Long Sleeve Shirt for Men/Man', '1697001655.jpg', 'shirt', '10', '50', '0', NULL, '2023-10-10 23:20:55', '2023-10-10 23:20:55'),
-(11, 'pant', NULL, '1697002260.jpg', 'pant', '20', '45', '1', NULL, '2023-10-10 23:31:00', '2023-10-10 23:31:00'),
-(12, 'kabli panjabi', 'this panjabi is good for helth', '1697002860.webp', 'panjabi', '22', '200', '0', NULL, '2023-10-10 23:41:00', '2023-10-10 23:41:00');
+(10, 'Long Sleeve Shirt for Men', 'New Casual Cotton Long Sleeve Shirt for Men/Man', '1697001655.jpg', 'shirt', '10', '50', '20', NULL, '2023-10-10 23:20:55', '2023-10-14 22:23:03'),
+(11, 'pant', 'heigh  quality product', '1697002260.jpg', 'pant', '20', '45', '5', NULL, '2023-10-10 23:31:00', '2023-10-14 22:24:16'),
+(12, 'kabli panjabi', 'this panjabi is good for helth', '1697002860.webp', 'panjabi', '22', '200', '50', NULL, '2023-10-10 23:41:00', '2023-10-14 22:23:32'),
+(13, 'Semi Long Panjabi', 'GoodMan Premium Coffee Color Semi Long Panjabi for Men.', '1697104704.jpg', 'panjabi', '21', '120', '20', NULL, '2023-10-12 03:58:24', '2023-10-12 03:58:24'),
+(14, 'Cotton Panjabi', 'Maroon Jamdani Cotton Panjabi', '1697105042.webp', 'panjabi', '200', '199', '49', NULL, '2023-10-12 04:03:11', '2023-10-12 04:13:41'),
+(15, 'iPhone 15 128GB Black', 'Apple iPhone 15 128GB Black', '1697467056.jpg', 'Phone', '50', '1649', '1600', NULL, '2023-10-16 08:37:36', '2023-10-16 08:37:36'),
+(16, 'Printed Shirt', 'Lymio Casual Shirt for Men', '1697467539.jpg', 'shirt', '20', '339', '300', NULL, '2023-10-16 08:45:39', '2023-10-16 08:45:39'),
+(17, 'Collar Casual Shirt', 'Men Regular Fit Solid Spread Collar Casual Shirt', '1697467652.jpg', 'shirt', '250', '399', '200', NULL, '2023-10-16 08:47:32', '2023-10-16 08:47:32'),
+(18, 'Casual Shirt', 'Mens Long Sleeve Button Up Shirt Bamboo Fiber', '1697467798.jpg', 'shirt', '200', '250', '200', NULL, '2023-10-16 08:49:58', '2023-10-16 08:49:58');
 
 -- --------------------------------------------------------
 
@@ -170,8 +246,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('8F835F424HqKBoJ1yz7wauoETuB6swtaxved5M8M', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQ0EwV0pDNzl0bmttRzZDU0xqRUN4MzA0UDg5aUFKVHdHc0plQmhQdCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC92aWV3X3Byb2R1Y3QiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO30=', 1696959313),
-('fz1tjceJ68oweAk4Dcj4RKJlOa1wkmI5FYLcjEtM', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieGRPZlNDaTF1V3Y3TUF2Q2hYeHBWV3c2aURsTTJlRkl5eWhRaWtJaSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1696971080);
+('5O3XasV17ButyKJPGzHVMX2Syl874ApuQiBTmQpJ', 6, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiOEhycjd6TExtN3NnVEM3RG5tTjc5clJBNzFDcXRuR2ZONEdlRlMxSCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC8/cGFnZT0zIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Njt9', 1697482798);
 
 -- --------------------------------------------------------
 
@@ -204,11 +279,19 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `usertype`, `phone`, `address`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
 (3, 'admin', 'admin@gmail.com', '1', '01521319764', 'mohammadpur', NULL, '$2y$10$DbRk2ekY7lewekdnTr0oSeoNmRkQ00YVmiV/x75VZkZ.q3NkWQ3sO', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-08 08:54:12', '2023-10-08 08:54:12'),
-(4, 'user', 'user@gmail.com', '0', '01743670965', 'Dhanmondi', NULL, '$2y$10$3qs1BtF.7mgg5Sh1ttVamOmthqB.PWiLabhXqnMP9jZ0gnDxkSDtu', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-08 08:56:11', '2023-10-08 08:56:11');
+(4, 'user', 'user@gmail.com', '0', '01743670965', 'Dhanmondi', NULL, '$2y$10$3qs1BtF.7mgg5Sh1ttVamOmthqB.PWiLabhXqnMP9jZ0gnDxkSDtu', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-08 08:56:11', '2023-10-08 08:56:11'),
+(5, 'jahid', 'jahidsafiulla16@gmail.com', '0', '01521319764', 'mohammadpur', NULL, '$2y$10$XTbsqcJv56J/OZewqg2hSO1vLYBb5AHIdIz6kd80MI4Ka01XChsFq', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-14 21:50:04', '2023-10-14 21:50:04'),
+(6, 'rakib', 'rakib@gamil.com', '0', '01521319764', 'Mirpur', NULL, '$2y$10$0lkOO1YMBu0Rujt83WQsVu/wbc4r0dFV.oE.TASLw0RQHmBbY1EjC', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-14 22:20:48', '2023-10-14 22:20:48');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `catagories`
@@ -227,6 +310,12 @@ ALTER TABLE `failed_jobs`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -269,10 +358,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT for table `catagories`
 --
 ALTER TABLE `catagories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -284,7 +379,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -296,13 +397,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
