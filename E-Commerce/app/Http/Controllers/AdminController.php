@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Catagory;
 use App\Models\Product;
+use App\Models\Order;
 
 // use DB;
 // use Illuminate\Http\Requests;
@@ -96,6 +97,21 @@ class AdminController extends Controller
         return redirect()->back();
 
 
+
+    }
+
+    //view order tabel
+
+    public function view_order(){
+        $orderTable= order::all();
+        return view('admin.view_order',compact('orderTable'));
+    }
+
+    public function delivered($id){
+        $orderTable=order::find($id);
+        $orderTable->delivery_status='Delivered';
+        $orderTable->save();
+        return redirect()->back()->with('massege','Delivered Sucessfully');
 
     }
 

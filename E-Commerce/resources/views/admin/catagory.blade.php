@@ -54,12 +54,12 @@
 
 
               <div>
-              <table class="center table table-dark table-striped">
+              <table class="center table table-dark table-striped table-hover">
                 <thead>
-                  <tr>
-                    <th scope="col"  style="color: white">SL.</th>
-                    <th scope="col"  style="color: white"> Catagory Name</th>
-                    <th scope="col" style="color: white"> Action</th>
+                  <tr class="table-secondary">
+                    <th scope="col" >SL.</th>
+                    <th scope="col" > Catagory Name</th>
+                    <th scope="col"> Action</th>
                   </tr>
                 </thead>
                 <tbody>

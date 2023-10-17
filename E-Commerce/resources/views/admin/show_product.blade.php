@@ -7,16 +7,7 @@
 <html lang="en">
   <head>
    @include('admin.css')
-  <style>
-     .div_center{
-        margin-bottom:5px;
-        text-align:center;
-        padding:10px;
-        background-color:#454d55;
 
-   }
-
-  </style>
   </head>
   <body>
     <div class="container-scroller">
@@ -44,13 +35,13 @@
 
 
 
-    <div class="div_center">
-                    <h2>SHOW PRODUCT</h2>
+    <div class="">
+        <h2 class="text-center">SHOW PRODUCT TABLE</h2>
     </div>
     <div class="table-responsive">
-        <table class="table table-dark table-striped border border-white">
+        <table class="table table-dark table-striped border border-white table-hover">
             <thead>
-                <tr>
+                <tr class="table-secondary">
                     <th scope="col">No.</th>
                     <th scope="col">Product Title</th>
                     <th scope="col">Product Description</th>

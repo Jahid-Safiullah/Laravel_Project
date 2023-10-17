@@ -60,3 +60,12 @@ route::get('/delete_cart_item/{id}',[HomeController::class,'delete_cart_item']);
 route::get('/cash_order',[HomeController::class,'cash_order']);
 route::get('/stripe/{totalPrice}',[HomeController::class,'stripe']);
 Route::post('stripe/{totalPrice}',[HomeController::class,'stripePost'])->name('stripe.post');
+
+
+
+//-------------------------------------Admin Part------------------------------------------------------
+
+//----Order
+route::get('/view_order',[AdminController::class,'view_order']);
+route::get('/delivered/{id}',[AdminController::class,'delivered']);
+
