@@ -42,16 +42,16 @@
         <table class="table table-dark table-striped border border-white table-hover">
             <thead>
                 <tr class="table-secondary">
-                    <th scope="col">No.</th>
-                    <th scope="col">Product Title</th>
-                    <th scope="col">Product Description</th>
-                    <th scope="col">Product Price</th>
-                    <th scope="col">Discount Price</th>
-                    <th scope="col">P. Quantity</th>
-                    <th scope="col">P. Catagory</th>
-                    <th scope="col">P. Image</th>
-                    <th scope="col">Update</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col" class="text-dark">No.</th>
+                    <th scope="col" class="text-dark">Product Title</th>
+                    <th scope="col" class="text-dark">Product Description</th>
+                    <th scope="col" class="text-dark">Product Price</th>
+                    <th scope="col" class="text-dark">Discount Price</th>
+                    <th scope="col" class="text-dark">P. Quantity</th>
+                    <th scope="col" class="text-dark">P. Catagory</th>
+                    <th scope="col" class="text-dark">P. Image</th>
+                    <th scope="col" class="text-dark">Update</th>
+                    <th scope="col" class="text-dark">Delete</th>
 
                 </tr>
             </thead>

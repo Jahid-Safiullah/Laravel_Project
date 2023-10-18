@@ -110,6 +110,7 @@ class AdminController extends Controller
     public function delivered($id){
         $orderTable=order::find($id);
         $orderTable->delivery_status='Delivered';
+        $orderTable->payment_status='Paid';
         $orderTable->save();
         return redirect()->back()->with('massege','Delivered Sucessfully');
 

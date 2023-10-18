@@ -8,7 +8,8 @@
   <head>
    @include('admin.css')
    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  </head>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"  />
+</head>
   <body>
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.html -->
@@ -30,17 +31,17 @@
               else{
                 swal("Bad job!", "You clicked the button!", "success")
               }
-               
+
                 // swal('massege',' {{session()->get('massege')}}','success',{
                 //     button:true,
                 //     button:'ok',
                 // });
             </script>
-            
 
-                    
 
-          
+
+
+
 
         <!-- @endif -->
 
@@ -50,28 +51,28 @@
             <div class="content-wrapper">
 
 
-            
+
             <div >
                     <h2 class="text-center">SHOW ORDERED TABLE</h2>
             </div>
                 <div class="table-responsive ">
                 <table class="table table-dark table-striped table-hover " >
-                    
+
                     <thead >
-                       
-                        <tr class="table-secondary">
-                        <th scope="col">Order SL.</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">Product Title</th>
-                        <th scope="col">Image</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Payment Status</th>
-                        <th scope="col">Delivery Status</th>
-                        <th scope="col">Delivered</th>
+primary
+                        <tr class="table-secondary ">
+                        <th scope="col" class="text-dark">Order SL.</th>
+                        <th scope="col" class="text-dark">Name</th>
+                        <th scope="col" class="text-dark">Email</th>
+                        <th scope="col" class="text-dark">Phone</th>
+                        <th scope="col" class="text-dark">Address</th>
+                        <th scope="col" class="text-dark">Product Title</th>
+                        <th scope="col" class="text-dark">Image</th>
+                        <th scope="col" class="text-dark">Quantity</th>
+                        <th scope="col" class="text-dark">Price</th>
+                        <th scope="col" class="text-dark">Payment Status</th>
+                        <th scope="col" class="text-dark">Delivery Status</th>
+                        <th scope="col" class="text-dark">Delivered</th>
                         </tr>
                     </thead>
 
@@ -89,9 +90,18 @@
                         <td>{{$orderTableData->price}}</td>
                         <td>{{$orderTableData->payment_status}}</td>
                         <td>{{$orderTableData->delivery_status}}</td>
-                        <td><a href="{{url('delivered',$orderTableData->id)}}" class="btn btn-primary">Delivered</a></td>
-                        </tr> 
-                        @endforeach                
+                        <td>
+                            @if($orderTableData->delivery_status=='processing')
+                            <a href="{{url('delivered',$orderTableData->id)}}" class="btn btn-primary" onclick="return confirm('Are You Sure This Product is Delivered  !!!')">Delivered</a>
+                            @else
+                            <p>
+                                <i class="fa-regular fa-circle-check fa-beat fa-2xl " style="color: #bb9e0c; "></i>
+
+                            </p>
+                            @endif
+                        </td>
+                        </tr>
+                        @endforeach
                     </tbody>
 
                 </table>
@@ -100,7 +110,7 @@
 
             </div>
         </div>
-      
+
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('admin.script')

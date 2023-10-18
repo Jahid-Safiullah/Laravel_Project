@@ -108,8 +108,8 @@ class HomeController extends Controller
             $orderTabel->image=         $cartData->image;
             $orderTabel->product_id=    $cartData->product_id;
 
-            $orderTabel->payment_status=         'cash on delivery';
-            $orderTabel->delivery_status=         'processing';
+            $orderTabel->payment_status=         'Cash on delivery';
+            $orderTabel->delivery_status=         'Processing';
 
             $orderTabel->save();
 
@@ -157,8 +157,8 @@ class HomeController extends Controller
            $orderTabel->image=         $cartData->image;
            $orderTabel->product_id=    $cartData->product_id;
 
-           $orderTabel->payment_status= 'Paid';
-           $orderTabel->delivery_status='processing';
+           $orderTabel->payment_status= 'Paid BY Card';
+           $orderTabel->delivery_status='Processing';
 
            $orderTabel->save();
 
