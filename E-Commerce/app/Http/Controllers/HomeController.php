@@ -23,7 +23,19 @@ class HomeController extends Controller
     public function redirect(){
         $usertype=Auth::user()->usertype;
         if($usertype=='1'){
-            return view('admin.home');
+            $product_data=product::all()->count();
+            $total_order=order::all()->count();
+            $total_user=user::all()->count();
+            $total_order_prices=order::all();
+            $price=0;
+            foreach($total_order_prices as $total_order_price)
+            {
+                $price=$price+$total_order_price->price;
+            }
+
+            $delivered_order=order::where('delivery_status','=','Delivered')->get()->count();
+            $processing_order=order::where('delivery_status','!=','Delivered')->get()->count();
+            return view('admin.home',compact('product_data','total_order','total_user','price','delivered_order','processing_order'));
         }
         else{
             $productDatas=product::paginate(9);
