@@ -120,7 +120,7 @@ class AdminController extends Controller
 
     public function print_pdf($id){
         $orderDatas=order::find($id);
-        $print_pdf=PDF::loadView('admin.pdf_order_delivered');
+        $print_pdf=PDF::loadView('admin.pdf_order_delivered',compact('orderDatas'));
     return $print_pdf->download( $orderDatas->id . '. ' . $orderDatas->name.'-'.$orderDatas->product_title);
 
     }
