@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Catagory;
 use App\Models\Product;
 use App\Models\Order;
+use PDF;
 
 // use DB;
 // use Illuminate\Http\Requests;
@@ -113,6 +114,14 @@ class AdminController extends Controller
         $orderTable->payment_status='Paid';
         $orderTable->save();
         return redirect()->back()->with('massege','Delivered Sucessfully');
+
+    }
+    //for pdf---
+
+    public function print_pdf($id){
+        $orderDatas=order::find($id);
+        $print_pdf=PDF::loadView('admin.pdf_order_delivered');
+    return $print_pdf->download( $orderDatas->id . '. ' . $orderDatas->name.'-'.$orderDatas->product_title);
 
     }
 

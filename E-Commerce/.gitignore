@@ -20,3 +20,4 @@ yarn-error.log
 
 # STRIPE_KEY=pk_test_51O1X8eAPznKU0GKBgK8iPJYWD1gZGGoL18aRf6zmVrweIeVsuaEM8AblMq1ocD1Kk5caoxbZh1t53DK8WRzbuO2p00jJdaTKU0
 # STRIPE_SECRET=sk_test_51O1X8eAPznKU0GKBPr13iNDjN7oDM1tRTDj8Gab4B3g0qMaIlQmTl1gqGlDSAj9rnjiBFvD2r89G7dxHeGHMoz3500oZvkmfps
+# php artisan serve --port=8080

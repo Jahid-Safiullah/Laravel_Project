@@ -8,14 +8,14 @@ use App\Models\User;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Order;
-
+//for strip------
 use Session;
 use Stripe;
 
 class HomeController extends Controller
 {
     public function index(){
-        $productDatas=product::paginate(3);
+        $productDatas=product::paginate(6);
         return view ('home.userpage',compact('productDatas'));
     }
 
@@ -26,7 +26,7 @@ class HomeController extends Controller
             return view('admin.home');
         }
         else{
-            $productDatas=product::paginate(6);
+            $productDatas=product::paginate(9);
             return view ('home.userpage',compact('productDatas'));
         }
     }

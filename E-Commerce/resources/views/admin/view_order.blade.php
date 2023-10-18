@@ -59,7 +59,7 @@
                 <table class="table table-dark table-striped table-hover " >
 
                     <thead >
-primary
+
                         <tr class="table-secondary ">
                         <th scope="col" class="text-dark">Order SL.</th>
                         <th scope="col" class="text-dark">Name</th>
@@ -73,6 +73,7 @@ primary
                         <th scope="col" class="text-dark">Payment Status</th>
                         <th scope="col" class="text-dark">Delivery Status</th>
                         <th scope="col" class="text-dark">Delivered</th>
+                        <th scope="col" class="text-dark">Print PDF</th>
                         </tr>
                     </thead>
 
@@ -91,14 +92,19 @@ primary
                         <td>{{$orderTableData->payment_status}}</td>
                         <td>{{$orderTableData->delivery_status}}</td>
                         <td>
-                            @if($orderTableData->delivery_status=='processing')
+                            @if($orderTableData->delivery_status=='Processing')
                             <a href="{{url('delivered',$orderTableData->id)}}" class="btn btn-primary" onclick="return confirm('Are You Sure This Product is Delivered  !!!')">Delivered</a>
                             @else
-                            <p>
-                                <i class="fa-regular fa-circle-check fa-beat fa-2xl " style="color: #bb9e0c; "></i>
+                            <p style="margin-left:25%; margin-top: 12px;">
+                                <i class="fa-regular fa-circle-check fa-beat fa-2xl center" style="color: #bb9e0c;  "></i>
 
                             </p>
                             @endif
+                        </td>
+                        <td>
+                          <a class="btn btn-outline-light" href="{{url('print_pdf',$orderTableData->id)}}">
+                          <i class="fa-regular fa-file-pdf" style="color: #bf0d0d;"></i>PDF
+                          </a>
                         </td>
                         </tr>
                         @endforeach
