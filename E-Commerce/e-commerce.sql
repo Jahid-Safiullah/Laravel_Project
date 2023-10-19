@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2023 at 10:21 AM
+-- Generation Time: Oct 19, 2023 at 08:18 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -49,10 +49,7 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `name`, `email`, `phone`, `address`, `product_title`, `product_catagory`, `price`, `quantity`, `image`, `product_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(4, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', 'kabli panjabi', NULL, '0', '1', '1697002860.webp', '12', '4', '2023-10-14 10:13:23', '2023-10-14 10:13:23'),
-(5, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', 'Cotton Panjabi', NULL, '98', '2', '1697105042.webp', '14', '4', '2023-10-14 10:13:43', '2023-10-14 10:13:43'),
-(6, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', 'pant', NULL, '2', '2', '1697002260.jpg', '11', '4', '2023-10-14 21:47:29', '2023-10-14 21:47:29'),
-(19, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', 'Long Sleeve Shirt for Men', NULL, '40', '2', '1697001655.jpg', '10', '7', '2023-10-16 22:21:27', '2023-10-16 22:21:27');
+(29, 'admin', 'admin@gmail.com', '01521319764', 'mohammadpur', 'Long Sleeve Shirt for Men', NULL, '40', '2', '1697001655.jpg', '10', '3', '2023-10-18 23:54:24', '2023-10-18 23:54:24');
 
 -- --------------------------------------------------------
 
@@ -160,7 +157,21 @@ INSERT INTO `orders` (`id`, `name`, `email`, `phone`, `address`, `user_id`, `pro
 (17, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'Cotton Panjabi', '2', '98', '1697105042.webp', '14', 'Paid', 'Delivered', '2023-10-16 12:17:40', '2023-10-17 02:10:33'),
 (18, 'rakib', 'rakib@gamil.com', '01521319764', 'Mirpur', '6', 'Collar Casual Shirt', '1', '200', '1697467652.jpg', '17', 'Paid', 'processing', '2023-10-16 12:59:14', '2023-10-16 12:59:14'),
 (19, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'iPhone 15 128GB Black', '2', '3200', '1697467056.jpg', '15', 'cash on delivery', 'processing', '2023-10-16 22:20:51', '2023-10-16 22:20:51'),
-(20, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'Collar Casual Shirt', '2', '400', '1697467652.jpg', '17', 'cash on delivery', 'processing', '2023-10-16 22:20:51', '2023-10-16 22:20:51');
+(20, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'Collar Casual Shirt', '2', '400', '1697467652.jpg', '17', 'cash on delivery', 'processing', '2023-10-16 22:20:51', '2023-10-16 22:20:51'),
+(21, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'Long Sleeve Shirt for Men', '2', '40', '1697001655.jpg', '10', 'Paid', 'Delivered', '2023-10-17 21:07:01', '2023-10-18 21:34:55'),
+(22, 'admin', 'admin@gmail.com', '01521319764', 'mohammadpur', '3', 'pant', '1', '5', '1697002260.jpg', '11', 'Paid BY Card', 'Processing', '2023-10-17 21:16:55', '2023-10-17 21:16:55'),
+(23, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', '4', 'kabli panjabi', '1', '0', '1697002860.webp', '12', 'Paid', 'Delivered', '2023-10-18 21:08:11', '2023-10-18 21:28:36'),
+(24, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', '4', 'Cotton Panjabi', '2', '98', '1697105042.webp', '14', 'Paid', 'Delivered', '2023-10-18 21:08:11', '2023-10-18 21:25:32'),
+(25, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', '4', 'pant', '2', '2', '1697002260.jpg', '11', 'Paid', 'Delivered', '2023-10-18 21:08:11', '2023-10-18 21:10:58'),
+(26, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'iPhone 15 128GB Black', '1', '1600', '1697467056.jpg', '15', 'Paid', 'Delivered', '2023-10-18 21:24:55', '2023-10-18 21:25:24'),
+(27, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'Cotton Panjabi', '1', '49', '1697105042.webp', '14', 'Paid', 'Delivered', '2023-10-18 21:26:44', '2023-10-18 21:28:27'),
+(28, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'Semi Long Panjabi', '1', '20', '1697104704.jpg', '13', 'Cash on delivery', 'Processing', '2023-10-18 21:33:03', '2023-10-18 21:33:03'),
+(29, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'Cotton Panjabi', '1', '49', '1697105042.webp', '14', 'Cash on delivery', 'Processing', '2023-10-18 21:33:03', '2023-10-18 21:33:03'),
+(30, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'Long Sleeve Shirt for Men', '1', '20', '1697001655.jpg', '10', 'Paid', 'Delivered', '2023-10-18 21:33:03', '2023-10-18 21:34:41'),
+(31, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'iPhone 15 128GB Black', '1', '1600', '1697467056.jpg', '15', 'Paid BY Card', 'Processing', '2023-10-18 23:30:31', '2023-10-18 23:30:31'),
+(32, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'iPhone 15 128GB Black', '1', '1600', '1697467056.jpg', '15', 'Paid BY Card', 'Processing', '2023-10-18 23:30:31', '2023-10-18 23:30:31'),
+(33, 'jahangir', 'jahangir@gmail.com', '01235255555', 'gendaria', '7', 'pant', '3', '15', '1697002260.jpg', '11', 'Paid BY Card', 'Delivered', '2023-10-18 23:30:31', '2023-10-18 23:31:45'),
+(34, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', '4', 'Cotton Panjabi', '1', '49', '1697105042.webp', '14', 'Cash on delivery', 'Processing', '2023-10-18 23:55:36', '2023-10-18 23:55:36');
 
 -- --------------------------------------------------------
 
@@ -364,7 +375,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `catagories`
@@ -388,7 +399,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

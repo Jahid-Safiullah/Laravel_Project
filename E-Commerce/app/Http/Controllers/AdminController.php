@@ -111,7 +111,19 @@ class AdminController extends Controller
     public function delivered($id){
         $orderTable=order::find($id);
         $orderTable->delivery_status='Delivered';
-        $orderTable->payment_status='Paid';
+
+        // if($orderTable=order::where('payment_status','==','Cash on delivery')->get();){
+        //     $orderTable->payment_status='Paid';
+        // }
+
+        
+        // if($orderTable->payment_status . '==' . 'Cash on delivery'){
+        //     $orderTable->payment_status='Paid';
+        // }
+        // else{
+        //     $orderTable->payment_status='Paid BY Card';
+        // }
+       
         $orderTable->save();
         return redirect()->back()->with('massege','Delivered Sucessfully');
 

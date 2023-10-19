@@ -140,7 +140,7 @@ h3 {
     <div class="receipt_header">
         <h1>Receipt of Ordered </h1>
         <span>Famms</span>
-        <img src="home/images/logo.png" alt="Famms">
+        <!-- <img src="home/images/logo.png" alt="Famms"> -->
         <h2>Address: Dhanmondi, 1234-5 <span>Tel: +8801521319764 </span><span>Date:{{$orderDatas->created_at}}</span></h2>
 
     </div>
@@ -162,7 +162,7 @@ h3 {
                 <thead style="border-bottom: 1px dashed #000;">
                     <th>QTY</th>
                     <th>ITEM</th>
-                    <th>IMAGE</th>
+                    <!-- <th>IMAGE</th> -->
                     <th>PRICE</th>
                 </thead>
 
@@ -170,8 +170,8 @@ h3 {
                     <tr>
                         <td>{{$orderDatas->quantity}}</td>
                         <td>{{$orderDatas->product_title}}</td>
-                        {{-- <td><img src="product/{{$orderDatas->image}}" alt="">
-                            </td> --}}
+                        <!-- {{-- <td><img src="product/{{$orderDatas->image}}" alt="">
+                            </td> --}} -->
                         <td>{{$orderDatas->price}}</td>
                     </tr>
 
