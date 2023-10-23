@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2023 at 03:36 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Oct 23, 2023 at 09:18 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,13 +62,9 @@ CREATE TABLE `catagories` (
 --
 
 INSERT INTO `catagories` (`id`, `catagory_name`, `created_at`, `updated_at`) VALUES
-(2, 'pant', '2023-10-08 09:17:05', '2023-10-08 09:17:05'),
-(3, 'panjabi', '2023-10-08 09:40:08', '2023-10-08 09:40:08'),
-(4, 'shirt', '2023-10-08 09:52:09', '2023-10-08 09:52:09'),
-(5, 'shirt', '2023-10-08 09:55:36', '2023-10-08 09:55:36'),
-(7, 'pant', '2023-10-10 04:42:30', '2023-10-10 04:42:30'),
-(8, 'Cap', '2023-10-10 10:40:38', '2023-10-10 10:40:38'),
-(9, 'Phone', '2023-10-16 08:35:14', '2023-10-16 08:35:14');
+(1, 'pant', '2023-10-23 00:47:11', '2023-10-23 00:47:11'),
+(2, 'Shirt', '2023-10-23 00:47:20', '2023-10-23 00:47:20'),
+(3, 'cap', '2023-10-23 00:47:26', '2023-10-23 00:47:26');
 
 -- --------------------------------------------------------
 
@@ -103,16 +99,16 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(8, '2014_10_12_000000_create_users_table', 1),
-(9, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(10, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
-(11, '2019_08_19_000000_create_failed_jobs_table', 1),
-(12, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(13, '2023_10_01_132520_create_sessions_table', 1),
-(14, '2023_10_07_061733_create_catagories_table', 1),
-(15, '2023_10_09_064128_create_products_table', 2),
-(16, '2023_10_11_182135_create_carts_table', 3),
-(17, '2023_10_15_092832_create_orders_table', 4);
+(28, '2014_10_12_000000_create_users_table', 1),
+(29, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(30, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
+(31, '2019_08_19_000000_create_failed_jobs_table', 1),
+(32, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(33, '2023_10_01_132520_create_sessions_table', 1),
+(34, '2023_10_07_061733_create_catagories_table', 1),
+(35, '2023_10_09_064128_create_products_table', 1),
+(36, '2023_10_11_182135_create_carts_table', 1),
+(37, '2023_10_15_092832_create_orders_table', 1);
 
 -- --------------------------------------------------------
 
@@ -122,6 +118,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `orders` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` char(36) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
@@ -142,36 +139,11 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `name`, `email`, `phone`, `address`, `user_id`, `product_title`, `quantity`, `price`, `image`, `product_id`, `payment_status`, `delivery_status`, `created_at`, `updated_at`) VALUES
-(12, 'rakib', 'rakib@gamil.com', '01521319764', 'Mirpur', '6', 'Cap', '1', '2', '1696956105.jpg', '9', 'cash on delivery', 'Delivered', '2023-10-15 04:42:13', '2023-10-17 09:41:00'),
-(13, 'rakib', 'rakib@gamil.com', '01521319764', 'Mirpur', '6', 'Long Sleeve Shirt for Men', '1', '20', '1697001655.jpg', '10', 'cash on delivery', 'processing', '2023-10-15 04:42:13', '2023-10-15 04:42:13'),
-(14, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'Semi Long Panjabi', '2', '40', '1697104704.jpg', '13', 'cash on delivery', 'Delivered', '2023-10-15 04:45:35', '2023-10-17 10:34:13'),
-(15, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'Long Sleeve Shirt for Men', '2', '40', '1697001655.jpg', '10', 'cash on delivery', 'Delivered', '2023-10-15 06:46:20', '2023-10-17 09:54:49'),
-(16, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'kabli panjabi', '2', '100', '1697002860.webp', '12', 'paid', 'Delivered', '2023-10-15 06:46:20', '2023-10-17 18:51:28'),
-(17, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'Cotton Panjabi', '2', '98', '1697105042.webp', '14', 'Paid', 'processing', '2023-10-16 12:17:40', '2023-10-16 12:17:40'),
-(18, 'rakib', 'rakib@gamil.com', '01521319764', 'Mirpur', '6', 'Collar Casual Shirt', '1', '200', '1697467652.jpg', '17', 'Paid', 'processing', '2023-10-16 12:59:14', '2023-10-16 12:59:14'),
-(19, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', '4', 'kabli panjabi', '1', '0', '1697002860.webp', '12', 'Paid BY Card', 'Processing', '2023-10-18 06:53:08', '2023-10-18 06:53:08'),
-(20, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', '4', 'Cotton Panjabi', '2', '98', '1697105042.webp', '14', 'Paid BY Card', 'Processing', '2023-10-18 06:53:08', '2023-10-18 06:53:08'),
-(21, 'user', 'user@gmail.com', '01743670965', 'Dhanmondi', '4', 'pant', '2', '2', '1697002260.jpg', '11', 'Paid BY Card', 'Processing', '2023-10-18 06:53:08', '2023-10-18 06:53:08'),
-(22, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'pant', '1', '5', '1697002260.jpg', '11', 'Cash on delivery', 'Processing', '2023-10-18 06:55:25', '2023-10-18 06:55:25'),
-(23, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'kabli panjabi', '2', '100', '1697002860.webp', '12', 'Cash on delivery', 'Processing', '2023-10-18 06:55:25', '2023-10-18 06:55:25'),
-(24, 'admin', 'admin@gmail.com', '01521319764', 'mohammadpur', '3', 'iPhone 15 128GB Black', '3', '4800', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-21 22:49:26', '2023-10-21 22:49:26'),
-(25, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '4', '6400', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-21 22:52:33', '2023-10-21 22:52:33'),
-(26, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '3', '4800', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-21 23:08:27', '2023-10-21 23:08:27'),
-(27, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '4', '6400', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-21 23:13:11', '2023-10-21 23:13:11'),
-(28, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '4', '6400', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-21 23:14:28', '2023-10-21 23:14:28'),
-(29, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '3', '4800', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-21 23:16:26', '2023-10-21 23:16:26'),
-(30, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'Long Sleeve Shirt for Men', '8', '160', '1697001655.jpg', '10', 'Cash on delivery', 'Processing', '2023-10-21 23:17:41', '2023-10-21 23:17:41'),
-(31, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '2', '3200', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-22 00:36:40', '2023-10-22 00:36:40'),
-(32, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '2', '3200', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-22 00:38:16', '2023-10-22 00:38:16'),
-(33, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '2', '3200', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-22 00:39:13', '2023-10-22 00:39:13'),
-(34, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '2', '3200', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-22 00:40:17', '2023-10-22 00:40:17'),
-(35, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '2', '3200', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-22 00:41:00', '2023-10-22 00:41:00'),
-(36, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '1', '1600', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-22 00:42:20', '2023-10-22 00:42:20'),
-(37, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '1', '1600', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-22 00:53:44', '2023-10-22 00:53:44'),
-(38, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '1', '1600', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-22 00:55:28', '2023-10-22 00:55:28'),
-(39, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'iPhone 15 128GB Black', '1', '1600', '1697467056.jpg', '15', 'Cash on delivery', 'Processing', '2023-10-22 00:57:41', '2023-10-22 00:57:41'),
-(40, 'jahid', 'jahidsafiulla16@gmail.com', '01521319764', 'mohammadpur', '5', 'pant', '10', '50', '1697002260.jpg', '11', 'Cash on delivery', 'Processing', '2023-10-22 06:04:49', '2023-10-22 06:04:49');
+INSERT INTO `orders` (`id`, `order_id`, `name`, `email`, `phone`, `address`, `user_id`, `product_title`, `quantity`, `price`, `image`, `product_id`, `payment_status`, `delivery_status`, `created_at`, `updated_at`) VALUES
+(3, 'dfb82da8-f70f-45ba-82ec-97fd45dc02e4', 'admin', 'admin@gmail.com', '01521319764', 'mohammadpur', '1', 'pant', '1', '15', '1698043801.jpg', '2', 'Cash on delivery', 'Processing', '2023-10-23 00:56:41', '2023-10-23 00:56:41'),
+(4, 'dfb82da8-f70f-45ba-82ec-97fd45dc02e4', 'admin', 'admin@gmail.com', '01521319764', 'mohammadpur', '1', 'shirt', '1', '7', '1698043741.webp', '1', 'Cash on delivery', 'Processing', '2023-10-23 00:56:41', '2023-10-23 00:56:41'),
+(5, '3e5fb887-4911-4630-813d-42ed81154e3e', 'admin', 'admin@gmail.com', '01521319764', 'mohammadpur', '1', 'shirt', '2', '14', '1698043741.webp', '1', 'Cash on delivery', 'Processing', '2023-10-23 01:03:07', '2023-10-23 01:03:07'),
+(6, '3e5fb887-4911-4630-813d-42ed81154e3e', 'admin', 'admin@gmail.com', '01521319764', 'mohammadpur', '1', 'pant', '2', '30', '1698043801.jpg', '2', 'Cash on delivery', 'Processing', '2023-10-23 01:03:07', '2023-10-23 01:03:07');
 
 -- --------------------------------------------------------
 
@@ -218,7 +190,7 @@ CREATE TABLE `products` (
   `catagory` varchar(255) NOT NULL,
   `quantity` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
-  `discount_price` varchar(255) NOT NULL,
+  `discount_price` varchar(255) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -229,15 +201,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `title`, `description`, `image`, `catagory`, `quantity`, `price`, `discount_price`, `category_id`, `created_at`, `updated_at`) VALUES
-(10, 'Long Sleeve Shirt for Men', 'New Casual Cotton Long Sleeve Shirt for Men/Man', '1697001655.jpg', 'shirt', '-12', '50', '20', NULL, '2023-10-10 23:20:55', '2023-10-14 22:23:03'),
-(11, 'pant', 'heigh  quality product', '1697002260.jpg', 'pant', '-2', '45', '5', NULL, '2023-10-10 23:31:00', '2023-10-14 22:24:16'),
-(12, 'kabli panjabi', 'this panjabi is good for helth', '1697002860.webp', 'panjabi', '0', '200', '50', NULL, '2023-10-10 23:41:00', '2023-10-14 22:23:32'),
-(13, 'Semi Long Panjabi', 'GoodMan Premium Coffee Color Semi Long Panjabi for Men.', '1697104704.jpg', 'panjabi', '-1', '120', '20', NULL, '2023-10-12 03:58:24', '2023-10-12 03:58:24'),
-(14, 'Cotton Panjabi', 'Maroon Jamdani Cotton Panjabi', '1697105042.webp', 'panjabi', '178', '199', '49', NULL, '2023-10-12 04:03:11', '2023-10-12 04:13:41'),
-(15, 'iPhone 15 128GB Black', 'Apple iPhone 15 128GB Black', '1697467056.jpg', 'Phone', '28', '1649', '1600', NULL, '2023-10-16 08:37:36', '2023-10-16 08:37:36'),
-(16, 'Printed Shirt', 'Lymio Casual Shirt for Men', '1697467539.jpg', 'shirt', '-2', '339', '300', NULL, '2023-10-16 08:45:39', '2023-10-16 08:45:39'),
-(17, 'Collar Casual Shirt', 'Men Regular Fit Solid Spread Collar Casual Shirt', '1697467652.jpg', 'shirt', '228', '399', '200', NULL, '2023-10-16 08:47:32', '2023-10-16 08:47:32'),
-(18, 'Casual Shirt', 'Mens Long Sleeve Button Up Shirt Bamboo Fiber', '1697467798.jpg', 'shirt', '178', '250', '200', NULL, '2023-10-16 08:49:58', '2023-10-16 08:49:58');
+(1, 'shirt', 'this shirt is good for health', '1698043741.webp', 'Shirt', '12', '10', '7', NULL, '2023-10-23 00:49:01', '2023-10-23 00:49:01'),
+(2, 'pant', 'this pant is good for health', '1698043801.jpg', 'pant', '17', '18', '15', NULL, '2023-10-23 00:50:01', '2023-10-23 00:50:01');
 
 -- --------------------------------------------------------
 
@@ -253,14 +218,6 @@ CREATE TABLE `sessions` (
   `payload` longtext NOT NULL,
   `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `sessions`
---
-
-INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('8ZEuzXym9HuD4km2dIhawtA0tsdcmzoFNwAdayFo', 5, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibTNjSExVWTdORHJiVmowRUpDMUJVcUpSWlVqQXA0QUZLU1EwUFVlUiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zaG93X3Byb2R1Y3QiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo1O30=', 1697976339),
-('bT4HNpLqsL6Q7FjEQDUH255q8i7QoJreH2OlZpHD', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoick1yVWlHNkVzdWlYdDlYSnFnTFpLdFZpVEVqb1ZhU2RRT2haZW5YRCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1698024924);
 
 -- --------------------------------------------------------
 
@@ -292,10 +249,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `usertype`, `phone`, `address`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(3, 'admin', 'admin@gmail.com', '1', '01521319764', 'mohammadpur', NULL, '$2y$10$DbRk2ekY7lewekdnTr0oSeoNmRkQ00YVmiV/x75VZkZ.q3NkWQ3sO', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-08 08:54:12', '2023-10-08 08:54:12'),
-(4, 'user', 'user@gmail.com', '0', '01743670965', 'Dhanmondi', NULL, '$2y$10$3qs1BtF.7mgg5Sh1ttVamOmthqB.PWiLabhXqnMP9jZ0gnDxkSDtu', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-08 08:56:11', '2023-10-08 08:56:11'),
-(5, 'jahid', 'jahidsafiulla16@gmail.com', '0', '01521319764', 'mohammadpur', NULL, '$2y$10$XTbsqcJv56J/OZewqg2hSO1vLYBb5AHIdIz6kd80MI4Ka01XChsFq', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-14 21:50:04', '2023-10-14 21:50:04'),
-(6, 'rakib', 'rakib@gamil.com', '0', '01521319764', 'Mirpur', NULL, '$2y$10$0lkOO1YMBu0Rujt83WQsVu/wbc4r0dFV.oE.TASLw0RQHmBbY1EjC', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-14 22:20:48', '2023-10-14 22:20:48');
+(1, 'admin', 'admin@gmail.com', '1', '01521319764', 'mohammadpur', NULL, '$2y$10$lTiDkIlqfBHdu6LhOnVzk.YUdEfNCteyQgkPwZ7rJqmzPTqL6TLti', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-23 00:42:55', '2023-10-23 00:42:55'),
+(2, 'user', 'user@gmail.com', '0', '01521319764', 'mohammadpur', NULL, '$2y$10$Y6PI8vyxoI5Y5riaw/9GV.UVR6A1PGrNFLaZ0KxYL3lvu.BmfjtQC', NULL, NULL, NULL, NULL, NULL, NULL, '2023-10-23 00:44:24', '2023-10-23 00:44:24');
 
 --
 -- Indexes for dumped tables
@@ -375,13 +330,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `catagories`
 --
 ALTER TABLE `catagories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -393,13 +348,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -411,13 +366,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
