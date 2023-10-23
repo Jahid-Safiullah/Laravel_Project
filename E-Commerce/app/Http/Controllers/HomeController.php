@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Order;
+use DB;
+use Illuminate\Support\Str;
 //for strip------
 use Session;
 use Stripe;
@@ -123,14 +125,16 @@ class HomeController extends Controller
 
 
 //for user order by Cash ON delivery--- and take cart data to order tabel 
+
     public function cash_order(){
 
          $userid=Auth::user()->id;
          $cartDatas=cart::where('user_id','=',$userid)->get();
-
+        $orderId =Str::uuid();
         foreach($cartDatas as $cartData){
             $orderTabel=new order;
             $orderTabel->name=          $cartData->name;
+            $orderTabel->order_id=      $orderId;
             $orderTabel->email=         $cartData->email;
             $orderTabel->phone=         $cartData->phone;
             $orderTabel->address=       $cartData->address;
@@ -147,6 +151,7 @@ class HomeController extends Controller
 
             $orderTabel->save();
 
+//for deleting data from cart table which are added in order table.
             $cart_id=$cartData->id;
             $delete_cart_id=cart::find($cart_id);
             $delete_cart_id->delete();
@@ -160,6 +165,18 @@ class HomeController extends Controller
 
             // Product::find(id)->update('quaa', )
 
+
+//for subtruct product quantity from product table which one is sell or order
+            // $product_quantity=product::find('quantity');
+            // $order_quantity=order::find('quantity');
+            // $subtruct=$product_quantity.'-'.$order_quantity;
+            // $product_quantity->update(['product_quantity'->$subtruct]);
+
+
+            // update `product` set `quantity` = `quantity` - 4
+
+            DB::table('products')->decrement('quantity', $orderTabel->quantity);
+                                // ->where('quantity','>',$orderTabel->quantity);
         }
 
         return redirect()->back()->with('massege','We have received your order. We will connect with you soon....');

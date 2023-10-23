@@ -111,7 +111,7 @@ class AdminController extends Controller
     //view order tabel
 
     public function view_order(){
-        $orderTable= order::all();
+        $orderTable= order::all()->groupBy('order_id');
         
         return view('admin.view_order',compact('orderTable'));
     }
