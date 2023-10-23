@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Order;
+use DB;
 //for strip------
 use Session;
 use Stripe;
@@ -82,6 +83,9 @@ class HomeController extends Controller
         return redirect('login');
        }
     }
+
+
+
     public function show_cart(){
        if(Auth::id()){
         $id=Auth::user()->id;
@@ -125,9 +129,22 @@ class HomeController extends Controller
 
             $orderTabel->save();
 
+//for deleting data from cart table which are added in order table.
             $cart_id=$cartData->id;
             $delete_cart_id=cart::find($cart_id);
             $delete_cart_id->delete();
+
+
+//for subtruct product quantity from product table which one is sell or order
+            // $product_quantity=product::find('quantity');
+            // $order_quantity=order::find('quantity');
+            // $subtruct=$product_quantity.'-'.$order_quantity;
+            // $product_quantity->update(['product_quantity'->$subtruct]);
+
+
+            // update `product` set `quantity` = `quantity` - 4
+
+            DB::table('products')->decrement('quantity', $orderTabel->quantity)->where('quantity','>',$orderTabel->quantity);
         }
         return redirect()->back()->with('massege','We have received your order. We will connect with you soon....');
     }
