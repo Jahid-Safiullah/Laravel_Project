@@ -12,14 +12,23 @@ use App\Models\Order;
 use Session;
 use Stripe;
 
+
+
 class HomeController extends Controller
 {
+
+
+
+//for your fornt home page ,there is no login & registration
     public function index(){
         $productDatas=product::paginate(6);
         return view ('home.userpage',compact('productDatas'));
     }
 
 
+
+
+//for admin connection to fornend------
     public function redirect(){
         $usertype=Auth::user()->usertype;
         if($usertype=='1'){
@@ -43,12 +52,19 @@ class HomeController extends Controller
         }
     }
 
+
+
+//for product detailes-------
     public function product_details($id){
         $product_details_data=product::find($id);
         return view('home.product_details',compact('product_details_data'));
 
 
     }
+
+
+
+// from user & product table data to add cart tabel------  
     public function add_cart(Request $request, $id){
        if(Auth::id()){
         $user=Auth::user();
@@ -82,6 +98,10 @@ class HomeController extends Controller
         return redirect('login');
        }
     }
+
+
+
+//show cart table data 
     public function show_cart(){
        if(Auth::id()){
         $id=Auth::user()->id;
@@ -100,7 +120,9 @@ class HomeController extends Controller
 
     }
 
-    //for user order by Cash ON delivery
+
+
+//for user order by Cash ON delivery--- and take cart data to order tabel 
     public function cash_order(){
 
          $userid=Auth::user()->id;
@@ -128,17 +150,35 @@ class HomeController extends Controller
             $cart_id=$cartData->id;
             $delete_cart_id=cart::find($cart_id);
             $delete_cart_id->delete();
+
+            // Update the stock
+
+            // $currentStock = Product::find();
+            // $currentQuantity = $currentStock->quantity
+
+            // $updatedatedtq = $currentQuantity - $orderTabel->quantity
+
+            // Product::find(id)->update('quaa', )
+
         }
+
         return redirect()->back()->with('massege','We have received your order. We will connect with you soon....');
     }
 
 
-    //user order by using card (strip)-----
 
+
+        //----------------------------------user order by using card (strip)----------------------------------------
+
+
+//for stipe
     public function stripe($totalPrice){
         return view('home.stripe',compact('totalPrice'));
     }
 
+
+
+ // for cart table data to order table  
     public function stripePost(Request $request,$totalPrice)
     {
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));

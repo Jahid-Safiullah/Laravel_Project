@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    // public $name;
     use HasFactory;
+
+//    function hello(){
+//         return 'hello';
+//     }
 }

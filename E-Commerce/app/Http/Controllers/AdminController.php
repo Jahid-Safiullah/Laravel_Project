@@ -14,17 +14,24 @@ use PDF;
 
 class AdminController extends Controller
 {
-    public function view_catagory(){
-        $data=catagory::all();
-        return view('admin.catagory',compact('data'));
-    }
 
+
+//for add catagory form to database catagory table
     public function add_catagory(Request $request){
         $data=new catagory;
         $data->catagory_name=$request->catagory;
         $data->save();
         return redirect()->back()->with('message','Catagory added Successfully');
     }
+
+
+// from database catagory table to view catagory data 
+    public function view_catagory(){
+        $data=catagory::all();
+        return view('admin.catagory',compact('data'));
+    }
+
+   
     public function delete_catagory($id){
         $data=catagory::find($id);
         $data->delete();
@@ -105,6 +112,7 @@ class AdminController extends Controller
 
     public function view_order(){
         $orderTable= order::all();
+        
         return view('admin.view_order',compact('orderTable'));
     }
 
