@@ -1,4 +1,4 @@
-<section class="product_section layout_padding">
+<section class="product_section layout_padding" id="product">
     <div class="container">
        <div class="heading_container heading_center">
           <h2>
@@ -6,7 +6,7 @@
           </h2>
        </div>
 
-       <div class="row">
+       <div class="row" >
 
             @foreach($productDatas as $productData)
                 <div class="col-sm-6 col-md-4 col-lg-4">

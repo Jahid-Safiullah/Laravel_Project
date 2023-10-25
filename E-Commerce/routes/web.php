@@ -48,6 +48,10 @@ route::post('/update_product_add_to_database_table/{id}',[AdminController::class
 
 
 // ----------------------------------------user part--------------------------------------------------
+
+//for Catagory-----
+route::get('/show_catagories',[HomeController::class,'show_catagories']);
+
 //product
 route::get('/product_details/{id}',[HomeController::class,'product_details']);
 

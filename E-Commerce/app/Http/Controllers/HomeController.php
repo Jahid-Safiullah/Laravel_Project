@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\Catagory;
 use DB;
 use Illuminate\Support\Str;
 //for strip------
@@ -19,6 +20,12 @@ use Stripe;
 class HomeController extends Controller
 {
 
+//for your fornt home page ,there is no login & registration
+public function show_catagories(){
+    $catagoryDatas=catagory::all();
+    // return dd($catagoryDatas);
+    return view ('home.userpage',compact('catagoryDatas'));
+}
 
 
 //for your fornt home page ,there is no login & registration
