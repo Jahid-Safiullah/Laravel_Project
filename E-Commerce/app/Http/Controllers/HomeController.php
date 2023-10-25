@@ -22,10 +22,10 @@ class HomeController extends Controller
 
 //for your fornt home page ,there is no login & registration
 public function show_catagories(){
-    $catagoryDatas=catagory::all();
-    // return dd($catagoryDatas);
-    return view ('home.userpage',compact('catagoryDatas'));
-}
+    $catagory=catagory::get();
+    // return dd($catagory);
+//     return view ('home.userpage',compact('catagory'));
+ }
 
 
 //for your fornt home page ,there is no login & registration
@@ -73,7 +73,7 @@ public function show_catagories(){
 
 
 
-// from user & product table data to add cart tabel------  
+// from user & product table data to add cart tabel------
     public function add_cart(Request $request, $id){
        if(Auth::id()){
         $user=Auth::user();
@@ -110,7 +110,7 @@ public function show_catagories(){
 
 
 
-//show cart table data 
+//show cart table data
     public function show_cart(){
        if(Auth::id()){
         $id=Auth::user()->id;
@@ -131,7 +131,7 @@ public function show_catagories(){
 
 
 
-//for user order by Cash ON delivery--- and take cart data to order tabel 
+//for user order by Cash ON delivery--- and take cart data to order tabel
 
     public function cash_order(){
 
@@ -202,7 +202,7 @@ public function show_catagories(){
 
 
 
- // for cart table data to order table  
+ // for cart table data to order table
     public function stripePost(Request $request,$totalPrice)
     {
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));

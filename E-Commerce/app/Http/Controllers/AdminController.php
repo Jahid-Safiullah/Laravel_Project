@@ -25,13 +25,13 @@ class AdminController extends Controller
     }
 
 
-// from database catagory table to view catagory data 
+// from database catagory table to view catagory data
     public function view_catagory(){
         $data=catagory::all();
         return view('admin.catagory',compact('data'));
     }
 
-   
+
     public function delete_catagory($id){
         $data=catagory::find($id);
         $data->delete();
@@ -113,7 +113,7 @@ class AdminController extends Controller
     public function view_order(){
         $orderTable= order::all();
         // ->groupBy('order_id');
-        
+
         return view('admin.view_order',compact('orderTable'));
     }
 
@@ -125,14 +125,14 @@ class AdminController extends Controller
         //     $orderTable->payment_status='Paid';
         // }
 
-        
+
         // if($orderTable->payment_status . '==' . 'Cash on delivery'){
         //     $orderTable->payment_status='Paid';
         // }
         // else{
         //     $orderTable->payment_status='Paid BY Card';
         // }
-       
+
         $orderTable->save();
         return redirect()->back()->with('massege','Delivered Sucessfully');
 
@@ -140,7 +140,8 @@ class AdminController extends Controller
     //for pdf---
 
     public function print_pdf($id){
-        $orderDatas=order::find($id);
+        $orderDatas=order::find($id)->groupBy('order_id')->get();
+
         $print_pdf=PDF::loadView('admin.pdf_order_delivered',compact('orderDatas'));
     return $print_pdf->download( $orderDatas->id . '. ' . $orderDatas->name.'-'.$orderDatas->product_title);
 

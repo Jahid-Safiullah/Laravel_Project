@@ -10,16 +10,26 @@
                 <li class="nav-item active">
                    <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
-               
+
                <li class="nav-item dropdown">
-                   <a class="nav-link dropdown-toggle" href="{{url('show_catagories')}}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Catagories <span class="caret"></span></a>
-                 
+                   <a class="nav-link dropdown-toggle" href="{{url('/show_catagories')}}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Catagories <span class="caret"></span></a>
+
+
+
+
+
                    <ul class="dropdown-menu">
-                    <a class="nav-link" href="">shirrt</a>
+
+                    <a class="nav-link" href="#"></a>
+
+
                    </ul>
-                 
+
+
+
+
                 </li>
-             
+
                 <li class="nav-item">
                    <a class="nav-link" href="#product">Products</a>
                 </li>
