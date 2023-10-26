@@ -95,7 +95,7 @@
           </li>
 
           <li class="nav-item menu-items">
-            <a class="nav-link" href="{{url('view_order')}}">
+            <a class="nav-link" href="{{route('order')}}">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
               </span>

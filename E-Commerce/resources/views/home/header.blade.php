@@ -15,16 +15,11 @@
                    <a class="nav-link dropdown-toggle" href="{{url('/show_catagories')}}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Catagories <span class="caret"></span></a>
 
 
-
-
-
                    <ul class="dropdown-menu">
-
-                    <a class="nav-link" href="#"></a>
-
-
+                      @foreach($categories as $data)
+                    <a class="nav-link" href="#">{{$data->catagory_name}}</a>
+                    @endforeach
                    </ul>
-
 
 
 

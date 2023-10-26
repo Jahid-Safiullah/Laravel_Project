@@ -85,6 +85,10 @@ class AdminController extends Controller
         $catagories=catagory::all();
         return view('admin.update_product',compact('UpdateProductsDetailes','catagories'));
     }
+
+
+
+
     public function update_product_add_to_database_table(Request $request, $id){
         $updateProductDatas=product::find($id);
         $updateProductDatas->title=$request->title;
@@ -110,12 +114,27 @@ class AdminController extends Controller
 
     //view order tabel
 
-    public function view_order(){
-        $orderTable= order::all();
-        // ->groupBy('order_id');
+    public function order(){
+        // $orderTable = new Order();
+        // $orderTable->all();
 
-        return view('admin.view_order',compact('orderTable'));
+        $orderTable= Order::all()->groupBy('order_id');
+        // dd(compact('orderTable'));
+
+        return view('admin.order',compact('orderTable'));
     }
+    
+
+    public function view_order($order_id){
+
+        $allOrderProduct=Order::where('order_id',$order_id)->get();
+        // dd($allOrderProduct->toArray());
+
+        return view ('admin.order_all_product',compact('allOrderProduct'));
+
+    }
+
+
 
     public function delivered($id){
         $orderTable=order::find($id);

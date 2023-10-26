@@ -62,17 +62,18 @@
 
                         <tr class="table-secondary ">
                         <th scope="col" class="text-dark">Order SL.</th>
+                        <th scope="col" class="text-dark">ID</th>
                         <th scope="col" class="text-dark">Name</th>
                         <th scope="col" class="text-dark">Email</th>
                         <th scope="col" class="text-dark">Phone</th>
                         <th scope="col" class="text-dark">Address</th>
-                        <th scope="col" class="text-dark">Product Title</th>
-                        <th scope="col" class="text-dark">Image</th>
+                        
                         <th scope="col" class="text-dark">Quantity</th>
                         <th scope="col" class="text-dark">Price</th>
                         <th scope="col" class="text-dark">Payment Status</th>
                         <th scope="col" class="text-dark">Delivery Status</th>
                         <th scope="col" class="text-dark">Delivered</th>
+                        <th scope="col" class="text-dark">View Order</th>
                         <th scope="col" class="text-dark">Print PDF</th>
                         </tr>
                     </thead>
@@ -80,32 +81,15 @@
                     <tbody>
                     @foreach($orderTable as $orderTableData)
                         <tr>
-                        <td>{{$orderTableData->id}} </td>
-                        <td>{{$orderTableData->name}} </td>
-                        <td>{{$orderTableData->email}}</td>
-                        <td>{{$orderTableData->phone}}</td>
-                        <td>{{$orderTableData->address}}</td>
-                        <td>{{$orderTableData->product_title}}</td>
-                        <td><img src="/product/{{$orderTableData->image}}" alt="{{$orderTableData->image}}"></td>
-                        <td>{{$orderTableData->quantity}}</td>
-                        <td>{{$orderTableData->price}}</td>
-                        <td>{{$orderTableData->payment_status}}</td>
-                        <td>{{$orderTableData->delivery_status}}</td>
-                        <td>
-                            @if($orderTableData->delivery_status=='Processing')
-                            <a href="{{url('delivered',$orderTableData->id)}}" class="btn btn-primary" onclick="return confirm('Are You Sure This Product is Delivered  !!!')">Delivered</a>
-                            @else
-                            <p style="margin-left:25%; margin-top: 12px;">
-                                <i class="fa-regular fa-circle-check fa-beat fa-2xl center" style="color: #bb9e0c;  "></i>
-
-                            </p>
-                            @endif
-                        </td>
-                        <td>
-                          <a class="btn btn-outline-light" href="{{url('print_pdf',$orderTableData->id)}}">
-                          <i class="fa-regular fa-file-pdf" style="color: #bf0d0d;"></i>PDF
-                          </a>
-                        </td>
+                        <td>{{$orderTableData[0]->order_id}} </td>
+                        <td>{{$orderTableData[0]->id}} </td>
+                        <td>{{$orderTableData[0]->name}} </td>
+                        <td>{{$orderTableData[0]->email}}</td>
+                        <td>{{$orderTableData[0]->phone}}</td>
+                        <td>{{$orderTableData[0]->address}}</td>
+                        <td> <a class="btn btn-primary" href="/view_order/{{$orderTableData[0]->order_id}}">View All Product</a> </td>
+                      
+                        
                         </tr>
                         @endforeach
                     </tbody>

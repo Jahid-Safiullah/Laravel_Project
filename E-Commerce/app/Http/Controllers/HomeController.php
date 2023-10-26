@@ -22,16 +22,18 @@ class HomeController extends Controller
 
 //for your fornt home page ,there is no login & registration
 public function show_catagories(){
-    $catagory=catagory::get();
-    // return dd($catagory);
-//     return view ('home.userpage',compact('catagory'));
+    $catagory=Catagory::get();
+    dd(compact('category'));
+    return view ('home.header',compact('catagory'));
  }
 
 
 //for your fornt home page ,there is no login & registration
     public function index(){
+        $categories=Catagory::all();
+        // dd(compact('categories'));
         $productDatas=product::paginate(6);
-        return view ('home.userpage',compact('productDatas'));
+        return view ('home.userpage',compact(['productDatas','categories']));
     }
 
 
@@ -115,7 +117,9 @@ public function show_catagories(){
        if(Auth::id()){
         $id=Auth::user()->id;
         $cartDatas=cart::where('user_id','=',$id)->get();
-        return view('home.showCart',compact('cartDatas'));
+
+        $categories=Catagory::all();
+        return view('home.showCart',compact(['cartDatas','categories']));
        }
        else{
         return redirect('login');
