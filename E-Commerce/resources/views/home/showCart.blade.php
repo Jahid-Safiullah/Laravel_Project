@@ -114,7 +114,7 @@ table tbody td .count{
                             <th  scope="row" colspan="4"><span class="text-danger">Total Price</span> Of Your Cart Listed <span>{{$totalQuantity}}</span> Products</th>
 
                             <td><b>$ {{$totalPrice }}</b></td>
-                            <td><a href="{{'/show_order'}}"></a></td>
+                            <td><a href="{{'/show_order'}}">hmm</a></td>
                         </tr>
                     </tfoot>
 

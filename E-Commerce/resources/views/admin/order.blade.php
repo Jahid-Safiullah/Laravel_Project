@@ -67,18 +67,15 @@
                         <th scope="col" class="text-dark">Email</th>
                         <th scope="col" class="text-dark">Phone</th>
                         <th scope="col" class="text-dark">Address</th>
-                        
-                        <th scope="col" class="text-dark">Quantity</th>
-                        <th scope="col" class="text-dark">Price</th>
                         <th scope="col" class="text-dark">Payment Status</th>
                         <th scope="col" class="text-dark">Delivery Status</th>
-                        <th scope="col" class="text-dark">Delivered</th>
-                        <th scope="col" class="text-dark">View Order</th>
+                        <th scope="col" class="text-dark">Order Detailes</th>
                         <th scope="col" class="text-dark">Print PDF</th>
                         </tr>
                     </thead>
 
                     <tbody>
+
                     @foreach($orderTable as $orderTableData)
                         <tr>
                         <td>{{$orderTableData[0]->order_id}} </td>
@@ -87,9 +84,14 @@
                         <td>{{$orderTableData[0]->email}}</td>
                         <td>{{$orderTableData[0]->phone}}</td>
                         <td>{{$orderTableData[0]->address}}</td>
-                        <td> <a class="btn btn-primary" href="/view_order/{{$orderTableData[0]->order_id}}">View All Product</a> </td>
-                      
-                        
+                        <td>{{$orderTableData[0]->payment_status}}</td>
+                        <td>
+                            {{$orderTableData[0]->delivery_status}}
+                        </td>
+
+                        <td> <a class="btn btn-primary" href="/view_order/{{$orderTableData[0]->order_id}}">Order Detailes</a> </td>
+                        <td> <a class="btn btn-outline-success" href="{{url('print_pdf',$orderTableData[0]->order_id)}}"><i class="fa-regular fa-file-pdf" style="color: #bd0a0a;"></i>PDF</a></td>
+
                         </tr>
                         @endforeach
                     </tbody>

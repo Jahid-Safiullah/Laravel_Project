@@ -115,20 +115,19 @@ class AdminController extends Controller
     //view order tabel
 
     public function order(){
-        // $orderTable = new Order();
-        // $orderTable->all();
 
         $orderTable= Order::all()->groupBy('order_id');
         // dd(compact('orderTable'));
 
         return view('admin.order',compact('orderTable'));
     }
-    
+
 
     public function view_order($order_id){
 
         $allOrderProduct=Order::where('order_id',$order_id)->get();
         // dd($allOrderProduct->toArray());
+        // dd(compact('allOrderProduct'));
 
         return view ('admin.order_all_product',compact('allOrderProduct'));
 
@@ -158,11 +157,11 @@ class AdminController extends Controller
     }
     //for pdf---
 
-    public function print_pdf($id){
-        $orderDatas=order::find($id)->groupBy('order_id')->get();
+    public function print_pdf($order_id){
+        $orderDatas=order::where('order_id',$order_id)->get();
 
         $print_pdf=PDF::loadView('admin.pdf_order_delivered',compact('orderDatas'));
-    return $print_pdf->download( $orderDatas->id . '. ' . $orderDatas->name.'-'.$orderDatas->product_title);
+    return $print_pdf->download( $orderDatas[0]->order_id . '. ' . $orderDatas[0]->name.'-'.$orderDatas[0]->address);
 
     }
 

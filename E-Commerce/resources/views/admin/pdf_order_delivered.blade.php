@@ -141,7 +141,7 @@ h3 {
         <h1>Receipt of Ordered </h1>
         <span>Famms</span>
         <!-- <img src="home/images/logo.png" alt="Famms"> -->
-        <h2>Address: Dhanmondi, 1234-5 <span>Tel: +8801521319764 </span><span>Date:{{$orderDatas->created_at}}</span></h2>
+        <h2>Address: Dhanmondi, 1234-5 <span>Tel: +8801521319764 </span><span>Date:{{$orderDatas[0]->created_at}}</span></h2>
 
     </div>
 
@@ -149,11 +149,11 @@ h3 {
     <div class="receipt_body">
 
         <div class="date_time_con">
-            <div class="">Order NO. <b>{{$orderDatas->id}}</b></div>
-            <div class="">Customer Name: <b>{{$orderDatas->name}}</b></div>
-            <div class="">Phone: <b>{{$orderDatas->phone}}</b></div>
-            <div class="">Email: <b>{{$orderDatas->email}}</b></div>
-            <div class="">Address: <b>{{$orderDatas->address}}</b></div>
+            <div class="">Order NO. : {{$orderDatas[0]->order_id}}</div>
+            <div class="">Customer Name : {{$orderDatas[0]->name}}</div>
+            <div class="">Phone : {{$orderDatas[0]->phone}}</div>
+            <div class="">Email : {{$orderDatas[0]->email}}</div>
+            <div class="">Address : {{$orderDatas[0]->address}}</div>
         </div>
 
         <div class="items">
@@ -165,15 +165,24 @@ h3 {
                     <!-- <th>IMAGE</th> -->
                     <th>PRICE</th>
                 </thead>
-
+                @php
+                    $totalPrice=0;
+                @endphp
                 <tbody>
+
+                    @foreach ($orderDatas as $orderData)
                     <tr>
-                        <td>{{$orderDatas->quantity}}</td>
-                        <td>{{$orderDatas->product_title}}</td>
+                        <td>{{$orderData->quantity}}</td>
+                        <td>{{$orderData->product_title}}</td>
                         <!-- {{-- <td><img src="product/{{$orderDatas->image}}" alt="">
                             </td> --}} -->
-                        <td>{{$orderDatas->price}}</td>
+                        <td>{{$orderData->price}}</td>
                     </tr>
+                    @php
+                        $totalPrice=$totalPrice+$orderData->price;
+                    @endphp
+                    @endforeach
+
 
                 </tbody>
 
@@ -181,13 +190,13 @@ h3 {
                     <tr>
                         <td><b>Total</b></td>
                         <td></td>
-                        <td><b>{{$orderDatas->price}}</b></td>
+                        <td><b>{{$totalPrice}}</b></td>
                     </tr>
 
                     <tr>
                         <td>Payment</td>
                         <td></td>
-                        <td>{{$orderDatas->payment_status}}</td>
+                        <td>{{$orderData->payment_status}}</td>
                     </tr>
 
 

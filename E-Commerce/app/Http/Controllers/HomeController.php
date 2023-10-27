@@ -22,9 +22,9 @@ class HomeController extends Controller
 
 //for your fornt home page ,there is no login & registration
 public function show_catagories(){
-    $catagory=Catagory::get();
-    dd(compact('category'));
-    return view ('home.header',compact('catagory'));
+    $categories=Catagory::get();
+    // dd(compact('categories '));
+    return view ('home.header',compact('categories'));
  }
 
 
