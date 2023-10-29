@@ -14,7 +14,7 @@ use PDF;
 
 class AdminController extends Controller
 {
-
+//--------------------------------------------Start Catagory Purpose-------------------------------------
 
 //for add catagory form to database catagory table
     public function add_catagory(Request $request){
@@ -44,13 +44,25 @@ class AdminController extends Controller
     //    echo '<a href= "/delete-records">Click Here</a> to go back.';
     // }
 
-    // ----for product purpose-------
-    //view main product blade file and get data from catagories table by catagory Model for product catagory dropdown option.
+//-------------------------------------------End Catagory Purpose---------------------------------------------
+
+
+
+// -------------------------------------Start product purpose--------------------------------------------------
+
+
+
+//view main product blade file and get data from catagories table by catagory Model for product catagory dropdown option.
+//for add product page view option catagory tabel from database
     public function view_product(){
         $catagories=catagory::all();
         return view('admin.product', compact('catagories'));
     }
 
+
+
+
+//for request add product to database
     public function add_product(Request $request ){
         $product=new product;
         $product->title=$request->title;
@@ -70,16 +82,30 @@ class AdminController extends Controller
         $product->save();
         return redirect()->back()->with('message','Product Added Successfully');
     }
+
+
+
+
+//for show product from database
     public function show_product(){
         $products=product::all();
         return view('admin.show_product',compact('products'));
     }
+
+
+
+ //for delete product
     public function delete_product($id){
         $products=product::find($id);
         $products->delete();
         return redirect()->back()->with('message','Product Deleted Successfully');
 
     }
+
+
+
+
+//for update product
     public function update_product( $id){
         $UpdateProductsDetailes=product::find($id);
         $catagories=catagory::all();
@@ -89,6 +115,7 @@ class AdminController extends Controller
 
 
 
+//for request update product send to database
     public function update_product_add_to_database_table(Request $request, $id){
         $updateProductDatas=product::find($id);
         $updateProductDatas->title=$request->title;
@@ -108,33 +135,46 @@ class AdminController extends Controller
         $updateProductDatas->save();
         return redirect()->back();
 
-
-
     }
 
-    //view order tabel
+//----------------------------------------End Product purpose---------------------------------------------
 
+
+//----------------------------------------Start Order purpose------------------------------------------------
+
+
+
+
+//view order tabel
     public function order(){
 
-        $orderTable= Order::all()->groupBy('order_id');
+        $orderTable= Order::all()->groupBy('order_id')->sortByDesc('id'); //can't use orderBY or sortBy why????
         // dd(compact('orderTable'));
-
         return view('admin.order',compact('orderTable'));
     }
 
 
+
+
+
+// view all product that ordered detailes
     public function view_order($order_id){
 
         $allOrderProduct=Order::where('order_id',$order_id)->get();
         // dd($allOrderProduct->toArray());
         // dd(compact('allOrderProduct'));
-
         return view ('admin.order_all_product',compact('allOrderProduct'));
-
     }
 
+//--------------------------------------------End order purpose-----------------------------------------------
 
 
+
+//---------------------------------------------Start Delivery purpose----------------------------------------
+
+
+
+//for delivered button and change the processing to Delivered
     public function delivered($id){
         $orderTable=order::find($id);
         $orderTable->delivery_status='Delivered';
@@ -153,10 +193,15 @@ class AdminController extends Controller
 
         $orderTable->save();
         return redirect()->back()->with('massege','Delivered Sucessfully');
-
     }
-    //for pdf---
+//-------------------------------------------------End Delivery Purpose------------------------------------------
 
+
+
+//-------------------------------------------------Start PDF Purpose-----------------------------------------
+
+
+ //for pdf---
     public function print_pdf($order_id){
         $orderDatas=order::where('order_id',$order_id)->get();
 
@@ -164,5 +209,11 @@ class AdminController extends Controller
     return $print_pdf->download( $orderDatas[0]->order_id . '. ' . $orderDatas[0]->name.'-'.$orderDatas[0]->address);
 
     }
+//--------------------------------------------------End PDF Purpose-------------------------------------------------
+
+
+
+
+
 
 }

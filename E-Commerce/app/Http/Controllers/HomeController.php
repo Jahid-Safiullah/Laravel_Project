@@ -20,17 +20,30 @@ use Stripe;
 class HomeController extends Controller
 {
 
-//for your fornt home page ,there is no login & registration
-public function show_catagories(){
-    $categories=Catagory::get();
-    // dd(compact('categories '));
-    return view ('home.header',compact('categories'));
- }
+   //-----------------------------------------------Start Catagory Purpose-------------------------------------
+
 
 
 //for your fornt home page ,there is no login & registration
+// public function show_catagories(){
+//     $category=Catagory::get();
+//     // dd(compact('categories '));
+//     return view ('home.header',compact('category'));
+//  }
+//--------------------------------------------------End Catagory Purpose----------------------------------------
+
+
+
+
+
+//---------------------------------Start Home Page Product and Catagory Purpose-----------------------------------------
+
+
+
+
+//for your fornt home page ,there is no login & registration and get data from product and catagory tabel
     public function index(){
-        $categories=Catagory::all();
+        $categories=Catagory::all(); //why we add agin in this paige????
         // dd(compact('categories'));
         $productDatas=product::paginate(6);
         return view ('home.userpage',compact(['productDatas','categories']));
@@ -38,8 +51,32 @@ public function show_catagories(){
 
 
 
+//for product detailes-------
+public function product_details($id){
+    $product_details_data=product::find($id);
+    return view('home.product_details',compact('product_details_data'));
+}
 
-//for admin connection to fornend------
+
+//for search product
+public function searchProduct(Request $request){
+    $categories=Catagory::all();
+    $searchText=$request->search;
+    $productDatas =product::where('title','LIKE',"% $searchText %")->paginate(6);
+    return view('home.userpage',compact('productDatas','categories'));
+}
+//-------------------------------------------Start Home Page Product and Catagory Purpose-------------------------
+
+
+
+
+
+//------------------------------------------------Start admin login Or Customer Login------------------------------------
+
+
+
+
+//for admin login connection to fornend and get data for admin dashbord
     public function redirect(){
         $usertype=Auth::user()->usertype;
         if($usertype=='1'){
@@ -63,17 +100,13 @@ public function show_catagories(){
         }
     }
 
+//-----------------------------------------------End admin login Or Customer Login---------------------------------
 
 
-//for product detailes-------
-    public function product_details($id){
-        $product_details_data=product::find($id);
-        return view('home.product_details',compact('product_details_data'));
 
 
-    }
 
-
+   //----------------------------------------------Start Cart Purpose--------------------------------------------
 
 // from user & product table data to add cart tabel------
     public function add_cart(Request $request, $id){
@@ -132,11 +165,15 @@ public function show_catagories(){
         return redirect()->back();
 
     }
+  //---------------------------------------------End Cart Purpose------------------------------------------------
+
+
+
+//------------------------------------------------Start Order Purpose--------------------------------------------
 
 
 
 //for user order by Cash ON delivery--- and take cart data to order tabel
-
     public function cash_order(){
 
          $userid=Auth::user()->id;
@@ -167,7 +204,9 @@ public function show_catagories(){
             $delete_cart_id=cart::find($cart_id);
             $delete_cart_id->delete();
 
-            // Update the stock
+
+
+// Update the stock------------
 
             // $currentStock = Product::find();
             // $currentQuantity = $currentStock->quantity
@@ -249,9 +288,9 @@ public function show_catagories(){
 
 
         Session::flash('success', 'Payment successful!');
-
+        DB::table('products')->decrement('quantity', $orderTabel->quantity);
         return back();
     }
-
+        //--------------------------------------End Order Purpose--------------------------------------------------
 
 }

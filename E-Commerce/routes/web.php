@@ -65,7 +65,8 @@ route::get('/cash_order',[HomeController::class,'cash_order']);
 route::get('/stripe/{totalPrice}',[HomeController::class,'stripe']);
 Route::post('stripe/{totalPrice}',[HomeController::class,'stripePost'])->name('stripe.post');
 
-
+//search product---
+Route::get('/search', [HomeController::class, 'searchProduct']);
 
 //-------------------------------------Admin Part------------------------------------------------------
 

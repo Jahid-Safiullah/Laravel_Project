@@ -4,7 +4,17 @@
           <h2>
              Our <span>products</span>
           </h2>
+
+          <div class="">
+            <form  class="input-group mb-3" action="{{url('search')}}" method="GET">
+                @csrf
+                <input style="width:700px;  border-bottom-left-radius: 25px; border-top-left-radius: 25px;"  name="search" type="text" class="form-control" placeholder="Search Your Product...." aria-label="Search Your Product" aria-describedby="button-addon2">
+                <button style="border-bottom-right-radius: 25px; border-top-right-radius: 25px;" class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+            </form>
+          </div>
+
        </div>
+
 
        <div class="row" >
 
@@ -63,49 +73,19 @@
                 </div>
 
                 @endforeach
-                <!-- ------- for pagination link - -->
+<!----------------------------------------- ------- for pagination link -------------------------------------------- -->
 
                 {{-- <!-- - {!!$productDatas->appends(Request::all())->links()!!} -- --> --}}
 
                 <!-- ------ this one is boostrap pagination --------- -->
 
-                {!!$productDatas->withQueryString()->links('pagination::bootstrap-5')!!}
+                {{-- {!!$productDatas->withQueryString()->links('pagination::bootstrap-5')!!} --}}
 
-               <!-- -------- end Pgination links  -----
- -->
+ <!-- ----------------------------------------------- end Pgination links  ----------------------------------------->
 
-                <!-- <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="box">
-                        <div class="option_container">
-                        <div class="options">
-                            <a href="" class="option1">
-                            Add To Cart
-                            </a>
-                            <a href="" class="option2">
-                            Buy Now
-                            </a>
-                        </div>
-                        </div>
-                        <div class="img-box">
-                        <img src="home/images/p2.png" alt="">
-                        </div>
-                        <div class="detail-box">
-                        <h5>
-                            Men's Shirt
-                        </h5>
-                        <h6>
-                            $80
-                        </h6>
-                        </div>
-                    </div>
-                </div> -->
+
 
        </div>
-       <!-- <div class="btn-box">
-          <a href="">
-          View All products
-          </a>
-       </div> -->
 
 
 
