@@ -26,9 +26,10 @@ class HomeController extends Controller
 
 //for your fornt home page ,there is no login & registration
 // public function show_catagories(){
-//     $category=Catagory::get();
+//     // $category=Catagory::get();
+//     $categories=Catagory::all(); 
 //     // dd(compact('categories '));
-//     return view ('home.header',compact('category'));
+//     return view ('home/header',compact('categories'));
 //  }
 //--------------------------------------------------End Catagory Purpose----------------------------------------
 
@@ -43,10 +44,10 @@ class HomeController extends Controller
 
 //for your fornt home page ,there is no login & registration and get data from product and catagory tabel
     public function index(){
-        $categories=Catagory::all(); //why we add agin in this paige????
+        // $categories=Catagory::all(); //why we add agin in this paige????
         // dd(compact('categories'));
         $productDatas=product::paginate(6);
-        return view ('home.userpage',compact(['productDatas','categories']));
+        return view('home.userpage',compact('productDatas'));
     }
 
 
@@ -60,10 +61,10 @@ public function product_details($id){
 
 //for search product
 public function searchProduct(Request $request){
-    $categories=Catagory::all();
+    // $categories=Catagory::all();
     $searchText=$request->search;
-    $productDatas =product::where('title','LIKE',"% $searchText %")->paginate(6);
-    return view('home.userpage',compact('productDatas','categories'));
+    $productDatas =product::where('title','LIKE',"%$searchText%")->paginate(6);
+    return view('home.userpage',compact('productDatas'));
 }
 //-------------------------------------------Start Home Page Product and Catagory Purpose-------------------------
 
@@ -151,8 +152,8 @@ public function searchProduct(Request $request){
         $id=Auth::user()->id;
         $cartDatas=cart::where('user_id','=',$id)->get();
 
-        $categories=Catagory::all();
-        return view('home.showCart',compact(['cartDatas','categories']));
+        // $categories=Catagory::all();
+        return view('home.showCart',compact('cartDatas'));
        }
        else{
         return redirect('login');

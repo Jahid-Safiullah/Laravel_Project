@@ -16,6 +16,10 @@
 
 
                    <ul class="dropdown-menu">
+                     @php 
+                        use App\Models\Catagory;
+                        $categories=Catagory::all();
+                     @endphp
                       @foreach($categories as $data)
                     <a class="nav-link" href="#">{{$data->catagory_name}}</a>
                     @endforeach
