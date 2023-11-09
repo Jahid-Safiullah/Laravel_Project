@@ -74,8 +74,8 @@
                             @endforeach
 
                         </select>
-
                         </div>
+
                         <div class="input-group mb-3">
                             <span class="input-group-text"  id="basic-addon3">Product Image Here :</span>
                             <input type="file" name="image" class="form-control"   aria-label="product image " aria-describedby="basic-addon3" required>
